@@ -504,56 +504,36 @@
     </footer>
   </div>
 
+  <script src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
   <script>
     document.getElementById('currentYear').textContent = new Date().getFullYear();
     
-    // MailChimp form validation and submission
+    // MailChimp validation setup
     (function($) {
-      // Set up field name and type arrays for MailChimp validation
       window.fnames = new Array(); 
       window.ftypes = new Array();
       fnames[0]='EMAIL';ftypes[0]='email';
       fnames[1]='FNAME';ftypes[1]='text';
       fnames[2]='LNAME';ftypes[2]='text';
       fnames[3]='PHONE';ftypes[3]='phone';
-    }(window.jQuery || function() {
-      // jQuery fallback for MailChimp validation
-      return {
-        fn: {
-          ready: function(fn) { fn(); }
-        }
-      };
-    }));
+    }(jQuery));
+    
+    var $mcj = jQuery.noConflict(true);
 
-    // Enhanced form handling with better UX
-    document.getElementById('waitlist-form').addEventListener('submit', function(e) {
-      const form = this;
-      const submitBtn = form.querySelector('.submit-btn');
-      const originalBtnText = submitBtn.textContent;
+    // Enhanced form handling with MailChimp integration
+    document.getElementById('mc-embedded-subscribe-form').addEventListener('submit', function(e) {
+      const submitBtn = this.querySelector('#mc-embedded-subscribe');
+      const originalBtnText = submitBtn.value;
       
       // Show loading state
-      submitBtn.textContent = 'Joining...';
+      submitBtn.value = 'Joining...';
       submitBtn.disabled = true;
       
-      // If MailChimp URL is not configured, show message
-      if (form.action.includes('YOUR_MAILCHIMP_ACTION_URL')) {
-        e.preventDefault();
-        alert('MailChimp integration needs to be configured. Please update the form action URL with your MailChimp details.');
-        submitBtn.textContent = originalBtnText;
-        submitBtn.disabled = false;
-        return;
-      }
-      
-      // For actual MailChimp integration, let the form submit naturally
-      // The target="_blank" will handle the redirect
+      // Reset after a moment to show feedback
       setTimeout(() => {
-        submitBtn.textContent = 'Thank you!';
-        setTimeout(() => {
-          submitBtn.textContent = originalBtnText;
-          submitBtn.disabled = false;
-          form.reset();
-        }, 2000);
-      }, 1000);
+        submitBtn.value = originalBtnText;
+        submitBtn.disabled = false;
+      }, 2000);
     });
   </script>
 </body>
