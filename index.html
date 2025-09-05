@@ -3,11 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Brandywine Direct Primary Care — Dr. Morgan Katz, DO</title>
-  <meta name="description" content="Dr. Morgan Katz, DO is launching Brandywine Direct Primary Care — membership-based family medicine in New Castle County, Delaware. Experience personalized, accessible healthcare without the hassle of insurance.">
+  <title>Brandywine Direct Primary Care – Dr. Morgan Katz, DO</title>
+  <meta name="description" content="Dr. Morgan Katz, DO is launching Brandywine Direct Primary Care – membership-based family medicine in New Castle County, Delaware. Experience personalized, accessible healthcare without the hassle of insurance.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Mailchimp Classic Form Styles -->
+  <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
+  
   <style>
     :root {
       --bg: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
@@ -226,40 +230,47 @@
       font-weight: 600;
     }
 
-    /* Form Styles */
-    .form-section {
+    /* Mailchimp Form Customization */
+    #mc_embed_signup {
       background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
       color: white;
       border-radius: 20px;
       padding: 2rem;
       box-shadow: var(--shadow-lg);
+      clear: left;
+      width: 100%;
     }
 
-    .form-section h3 {
+    #mc_embed_signup form {
+      padding: 0;
+    }
+
+    #mc_embed_signup h2 {
       color: white;
       margin-bottom: 0.5rem;
       font-size: 1.5rem;
       font-weight: 700;
+      margin: 0 0 0.5rem 0;
+      padding: 0;
     }
 
-    .form-description {
-      opacity: 0.9;
-      margin-bottom: 2rem;
-      font-size: 0.95rem;
-    }
-
-    .form-group {
+    #mc_embed_signup .mc-field-group {
       margin-bottom: 1.5rem;
+      padding-bottom: 0;
+      min-height: auto;
     }
 
-    .form-group label {
+    #mc_embed_signup label {
       display: block;
       font-weight: 600;
       margin-bottom: 0.5rem;
       color: white;
+      font-size: 0.9rem;
     }
 
-    .form-group input {
+    #mc_embed_signup input[type="text"],
+    #mc_embed_signup input[type="email"],
+    #mc_embed_signup input[type="tel"] {
       width: 100%;
       padding: 0.875rem 1rem;
       border: 2px solid rgba(255, 255, 255, 0.2);
@@ -269,23 +280,24 @@
       color: white;
       font-size: 1rem;
       transition: all 0.2s ease;
+      font-family: 'Inter', sans-serif;
     }
 
-    .form-group input::placeholder {
+    #mc_embed_signup input::placeholder {
       color: rgba(255, 255, 255, 0.7);
     }
 
-    .form-group input:focus {
+    #mc_embed_signup input:focus {
       outline: none;
       border-color: white;
       background: rgba(255, 255, 255, 0.15);
       box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
     }
 
-    .submit-btn {
+    #mc_embed_signup .button {
       width: 100%;
-      background: white;
-      color: var(--brand-primary);
+      background: white !important;
+      color: var(--brand-primary) !important;
       border: none;
       padding: 1rem 2rem;
       border-radius: 12px;
@@ -294,11 +306,60 @@
       cursor: pointer;
       transition: all 0.2s ease;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin: 0;
+      height: auto;
     }
 
-    .submit-btn:hover {
+    #mc_embed_signup .button:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      background: #f8f8f8 !important;
+    }
+
+    #mc_embed_signup .indicates-required {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+      text-align: right;
+    }
+
+    #mc_embed_signup .asterisk {
+      color: white;
+    }
+
+    #mc_embed_signup #mce-responses {
+      margin: 0;
+      padding: 0;
+    }
+
+    #mc_embed_signup #mce-error-response,
+    #mc_embed_signup #mce-success-response {
+      margin: 1rem 0 0 0;
+      padding: 1rem;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    #mc_embed_signup #mce-error-response {
+      background: rgba(239, 68, 68, 0.2);
+      color: white;
+      border: 1px solid rgba(239, 68, 68, 0.4);
+    }
+
+    #mc_embed_signup #mce-success-response {
+      background: rgba(16, 185, 129, 0.2);
+      color: white;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+
+    #mc_embed_signup div.mce_inline_error {
+      background-color: rgba(239, 68, 68, 0.2) !important;
+      color: white !important;
+      padding: 0.5rem !important;
+      border-radius: 8px;
+      margin-top: 0.5rem !important;
+      font-weight: 500 !important;
     }
 
     /* Doctor Info Section */
@@ -354,6 +415,14 @@
       opacity: 0.8;
     }
 
+    /* Form description */
+    .form-description {
+      opacity: 0.9;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
     /* Responsive Design */
     @media (max-width: 768px) {
       .container {
@@ -374,7 +443,7 @@
         padding: 1.5rem;
       }
       
-      .form-section {
+      #mc_embed_signup {
         padding: 1.5rem;
       }
     }
@@ -394,7 +463,7 @@
       <section class="hero">
         <div class="coming-soon">Coming Soon</div>
         <h1>Direct Primary Care<br>Reimagined</h1>
-        <p class="subtitle">Dr. Morgan Katz, DO is bringing personalized, accessible healthcare to New Castle County families — no insurance hassles, just exceptional care.</p>
+        <p class="subtitle">Dr. Morgan Katz, DO is bringing personalized, accessible healthcare to New Castle County families – no insurance hassles, just exceptional care.</p>
       </section>
 
       <section class="doctor-intro">
@@ -448,38 +517,55 @@
           </div>
 
           <p style="margin-top: 2rem; color: var(--text-muted); font-size: 0.9rem;">
-            <strong>Opening Early 2025</strong> — Join our waitlist to receive updates about membership availability, pricing details, and exclusive early access to appointments.
+            <strong>Opening Early 2025</strong> – Join our waitlist to receive updates about membership availability, pricing details, and exclusive early access to appointments.
           </p>
         </div>
 
-        <aside class="form-section">
-          <h3>Join the Waitlist</h3>
-          <p class="form-description">Be the first to know when Dr. Katz begins accepting new patients. We'll keep you updated on opening date, membership pricing, and give you priority access.</p>
-          
-          <form action="#" method="post" id="waitlist-form">
-            <div class="form-group">
-              <label for="firstName">First Name *</label>
-              <input type="text" id="firstName" name="firstName" required placeholder="Your first name">
+        <!-- Begin Mailchimp Signup Form -->
+        <div id="mc_embed_signup">
+          <form action="https://gmail.us3.list-manage.com/subscribe/post?u=28d9c6d094be6496bf7ce6613&amp;id=72bcd7bf17&amp;f_id=00d099e3f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+            <div id="mc_embed_signup_scroll">
+              <h2>Join the Waitlist</h2>
+              <p class="form-description">Be the first to know when Dr. Katz begins accepting new patients. We'll keep you updated on opening date, membership pricing, and give you priority access.</p>
+              <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+              
+              <div class="mc-field-group">
+                <label for="mce-FNAME">First Name <span class="asterisk">*</span></label>
+                <input type="text" value="" name="FNAME" class="required" id="mce-FNAME" placeholder="Your first name">
+              </div>
+              
+              <div class="mc-field-group">
+                <label for="mce-LNAME">Last Name <span class="asterisk">*</span></label>
+                <input type="text" value="" name="LNAME" class="required" id="mce-LNAME" placeholder="Your last name">
+              </div>
+              
+              <div class="mc-field-group">
+                <label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label>
+                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="your@email.com">
+              </div>
+              
+              <div class="mc-field-group">
+                <label for="mce-PHONE">Phone Number </label>
+                <input type="tel" value="" name="PHONE" class="" id="mce-PHONE" placeholder="(302) 555-0123">
+              </div>
+              
+              <div id="mce-responses" class="clear">
+                <div class="response" id="mce-error-response" style="display:none"></div>
+                <div class="response" id="mce-success-response" style="display:none"></div>
+              </div>
+              
+              <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+              <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                <input type="text" name="b_28d9c6d094be6496bf7ce6613_72bcd7bf17" tabindex="-1" value="">
+              </div>
+              
+              <div class="clear">
+                <input type="submit" value="Join Waitlist" name="subscribe" id="mc-embedded-subscribe" class="button">
+              </div>
             </div>
-            
-            <div class="form-group">
-              <label for="lastName">Last Name *</label>
-              <input type="text" id="lastName" name="lastName" required placeholder="Your last name">
-            </div>
-            
-            <div class="form-group">
-              <label for="email">Email Address *</label>
-              <input type="email" id="email" name="email" required placeholder="your@email.com">
-            </div>
-            
-            <div class="form-group">
-              <label for="phone">Phone Number</label>
-              <input type="tel" id="phone" name="phone" placeholder="(302) 555-0123">
-            </div>
-            
-            <button type="submit" class="submit-btn">Join Waitlist</button>
           </form>
-        </aside>
+        </div>
+        <!--End mc_embed_signup-->
       </div>
 
       <section class="info-section">
@@ -504,11 +590,9 @@
     </footer>
   </div>
 
-  <script src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
-  <script>
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
-    
-    // MailChimp validation setup
+  <!-- Mailchimp Form Validation Script -->
+  <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+  <script type='text/javascript'>
     (function($) {
       window.fnames = new Array(); 
       window.ftypes = new Array();
@@ -517,24 +601,10 @@
       fnames[2]='LNAME';ftypes[2]='text';
       fnames[3]='PHONE';ftypes[3]='phone';
     }(jQuery));
-    
     var $mcj = jQuery.noConflict(true);
-
-    // Enhanced form handling with MailChimp integration
-    document.getElementById('mc-embedded-subscribe-form').addEventListener('submit', function(e) {
-      const submitBtn = this.querySelector('#mc-embedded-subscribe');
-      const originalBtnText = submitBtn.value;
-      
-      // Show loading state
-      submitBtn.value = 'Joining...';
-      submitBtn.disabled = true;
-      
-      // Reset after a moment to show feedback
-      setTimeout(() => {
-        submitBtn.value = originalBtnText;
-        submitBtn.disabled = false;
-      }, 2000);
-    });
+    
+    // Set current year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
