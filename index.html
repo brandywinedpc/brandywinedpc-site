@@ -7,32 +7,41 @@
   <meta name="description" content="Dr. Morgan Katz, DO is launching Brandywine Direct Primary Care – membership-based family medicine in New Castle County, Delaware. Experience personalized, accessible healthcare without the hassle of insurance.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   
   <!-- Mailchimp Classic Form Styles -->
   <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
   
   <style>
     :root {
-      --bg: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
-      --card: rgba(255, 255, 255, 0.95);
-      --card-border: rgba(255, 255, 255, 0.2);
+      --bg: #ffffff;
+      --bg-gradient: linear-gradient(180deg, #ffffff 0%, #f0f9ff 40%, #e0f2fe 100%);
+      --card: rgba(255, 255, 255, 0.98);
+      --card-border: rgba(148, 163, 184, 0.12);
       --text: #0f172a;
       --text-muted: #475569;
+      --text-light: #64748b;
       --brand-primary: #0ea5e9;
       --brand-secondary: #06b6d4;
+      --brand-dark: #0284c7;
       --brand-gradient: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
       --accent: #10b981;
+      --accent-light: #34d399;
       --accent-bg: #ecfdf5;
-      --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-      --ring: rgba(14, 165, 233, 0.15);
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -42,21 +51,60 @@
       line-height: 1.6;
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
-      padding: 2rem 1.5rem;
+      padding: 0 1.5rem;
+    }
+
+    /* Decorative Background Elements */
+    .bg-decoration {
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .bg-circle-1 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.06) 0%, transparent 70%);
+      top: -300px;
+      right: -200px;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+    }
+
+    .bg-circle-2 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.05) 0%, transparent 70%);
+      bottom: 100px;
+      left: -100px;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
     }
 
     /* Header */
     .header {
+      position: relative;
+      z-index: 10;
+      padding: 2rem 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+    }
+
+    .header-content {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 3rem;
-      padding: 1rem 0;
     }
 
     .logo {
@@ -66,179 +114,537 @@
     }
 
     .logo-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 16px;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
       background: var(--brand-gradient);
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
       font-weight: 800;
-      font-size: 1.2rem;
+      font-size: 1.125rem;
       box-shadow: var(--shadow);
     }
 
     .logo-text {
-      font-size: 1.5rem;
+      font-size: 1.375rem;
       font-weight: 700;
       color: var(--text);
     }
 
-    .location-badge {
-      background: var(--card);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--card-border);
-      color: var(--brand-primary);
-      padding: 0.75rem 1.25rem;
+    .header-cta {
+      background: var(--brand-gradient);
+      color: white;
+      padding: 0.625rem 1.5rem;
       border-radius: 50px;
       font-weight: 600;
       font-size: 0.875rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
       box-shadow: var(--shadow);
+      cursor: pointer;
+      border: none;
+    }
+
+    .header-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
     }
 
     /* Hero Section */
     .hero {
-      background: var(--card);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--card-border);
-      border-radius: 24px;
-      padding: 3rem;
-      margin-bottom: 2rem;
-      box-shadow: var(--shadow-lg);
-      text-align: center;
       position: relative;
+      padding: 4rem 0 5rem;
+      background: var(--bg-gradient);
       overflow: hidden;
+      z-index: 1;
     }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: var(--brand-gradient);
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .hero-text {
+      z-index: 2;
+    }
+
+    .coming-soon-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent-bg);
+      color: var(--accent);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      margin-bottom: 1.5rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
     }
 
     .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 800;
-      margin-bottom: 1rem;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
       background: var(--brand-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
-    .hero .subtitle {
+    .hero-subtitle {
       font-size: 1.25rem;
       color: var(--text-muted);
       margin-bottom: 2rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+      line-height: 1.6;
     }
 
-    .coming-soon {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--accent-bg);
-      color: var(--accent);
-      padding: 0.75rem 1.5rem;
+    .hero-cta-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--brand-gradient);
+      color: white;
+      padding: 0.875rem 2rem;
       border-radius: 50px;
       font-weight: 600;
-      font-size: 0.875rem;
-      margin-bottom: 1rem;
-    }
-
-    .coming-soon::before {
-      content: '🎉';
-      animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(-10px); }
-      60% { transform: translateY(-5px); }
-    }
-
-    /* Main Content Grid */
-    .main-grid {
-      display: grid;
-      grid-template-columns: 1fr 400px;
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    @media (max-width: 1024px) {
-      .main-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .card {
-      background: var(--card);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 2rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
       box-shadow: var(--shadow);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: inline-block;
+      border: none;
+      cursor: pointer;
     }
 
-    .card:hover {
+    .btn-primary:hover {
       transform: translateY(-2px);
       box-shadow: var(--shadow-lg);
     }
 
-    .card h2, .card h3 {
-      color: var(--text);
-      margin-bottom: 1.5rem;
-      font-weight: 700;
+    .btn-secondary {
+      background: white;
+      color: var(--brand-primary);
+      padding: 0.875rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+      display: inline-block;
+      border: 2px solid var(--brand-primary);
     }
 
-    /* Benefits */
-    .benefit {
+    .btn-secondary:hover {
+      background: var(--brand-primary);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero-image {
+      position: relative;
+    }
+
+    .hero-graphic {
+      width: 100%;
+      max-width: 500px;
+      height: 500px;
+      background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%);
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      position: relative;
+      animation: float 6s ease-in-out infinite;
+      box-shadow: var(--shadow-xl);
       display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      padding: 1rem;
-      background: rgba(14, 165, 233, 0.03);
-      border-radius: 12px;
-      border-left: 3px solid var(--brand-primary);
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
     }
 
-    .benefit-icon {
-      width: 24px;
-      height: 24px;
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+
+    .hero-graphic-inner {
+      width: 80%;
+      height: 80%;
+      background: white;
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .hero-graphic-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--brand-gradient);
       border-radius: 50%;
-      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      font-size: 2.5rem;
+    }
+
+    /* Doctor Section */
+    .doctor-section {
+      padding: 5rem 0;
+      background: white;
+      position: relative;
+      z-index: 2;
+    }
+
+    .doctor-content {
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .doctor-image-wrapper {
+      position: sticky;
+      top: 120px;
+    }
+
+    .doctor-image {
+      width: 100%;
+      height: 450px;
+      background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 14px;
-      flex-shrink: 0;
-      margin-top: 2px;
+      font-size: 3rem;
+      font-weight: 700;
     }
 
-    .benefit-content strong {
+    .doctor-image-note {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 1rem;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .doctor-info {
+      padding-top: 1rem;
+    }
+
+    .doctor-info h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
       color: var(--text);
+    }
+
+    .doctor-credentials {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .credential-badge {
+      background: var(--accent-bg);
+      color: var(--accent);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.875rem;
       font-weight: 600;
+    }
+
+    .doctor-bio {
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .doctor-bio p {
+      margin-bottom: 1.5rem;
+    }
+
+    .doctor-highlights {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+
+    .doctor-highlights h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .highlight-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--brand-gradient);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      flex-shrink: 0;
+      font-size: 1rem;
+    }
+
+    .highlight-text h4 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .highlight-text p {
+      font-size: 0.875rem;
+      color: var(--text-light);
+    }
+
+    /* Why DPC Section */
+    .why-dpc-section {
+      padding: 5rem 0;
+      background: var(--bg-gradient);
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .section-header p {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .benefit-card {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--brand-primary);
+    }
+
+    .benefit-icon-large {
+      width: 64px;
+      height: 64px;
+      background: var(--accent-bg);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .benefit-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .benefit-card p {
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* How It Works Section */
+    .how-it-works {
+      padding: 5rem 0;
+      background: white;
+      position: relative;
+      z-index: 2;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+      position: relative;
+    }
+
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: 15%;
+      right: 15%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
+      z-index: 0;
+    }
+
+    .step-card {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-number {
+      width: 80px;
+      height: 80px;
+      background: white;
+      border: 3px solid var(--brand-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--brand-primary);
+      margin: 0 auto 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .step-card h4 {
+      font-size: 1.125rem;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .step-card p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Signup Section */
+    .signup-section {
+      padding: 5rem 0;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      position: relative;
+      z-index: 2;
+    }
+
+    .signup-content {
+      display: grid;
+      grid-template-columns: 1fr 450px;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .signup-info h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .signup-info p {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .included-list {
+      margin-bottom: 2rem;
+    }
+
+    .included-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .check-icon {
+      width: 24px;
+      height: 24px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      flex-shrink: 0;
     }
 
     /* Mailchimp Form Customization */
     #mc_embed_signup {
-      background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
-      color: white;
+      background: white;
       border-radius: 20px;
-      padding: 2rem;
-      box-shadow: var(--shadow-lg);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-xl);
+      border: 2px solid var(--brand-primary);
       clear: left;
       width: 100%;
+      position: sticky;
+      top: 120px;
     }
 
     #mc_embed_signup form {
@@ -246,9 +652,9 @@
     }
 
     #mc_embed_signup h2 {
-      color: white;
+      color: var(--text);
       margin-bottom: 0.5rem;
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       font-weight: 700;
       margin: 0 0 0.5rem 0;
       padding: 0;
@@ -264,40 +670,38 @@
       display: block;
       font-weight: 600;
       margin-bottom: 0.5rem;
-      color: white;
-      font-size: 0.9rem;
+      color: var(--text);
+      font-size: 0.875rem;
     }
 
     #mc_embed_signup input[type="text"],
     #mc_embed_signup input[type="email"],
     #mc_embed_signup input[type="tel"] {
       width: 100%;
-      padding: 0.875rem 1rem;
-      border: 2px solid rgba(255, 255, 255, 0.2);
+      padding: 0.75rem 1rem;
+      border: 2px solid #e2e8f0;
       border-radius: 12px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      color: white;
+      background: white;
+      color: var(--text);
       font-size: 1rem;
       transition: all 0.2s ease;
       font-family: 'Inter', sans-serif;
     }
 
     #mc_embed_signup input::placeholder {
-      color: rgba(255, 255, 255, 0.7);
+      color: #94a3b8;
     }
 
     #mc_embed_signup input:focus {
       outline: none;
-      border-color: white;
-      background: rgba(255, 255, 255, 0.15);
-      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+      border-color: var(--brand-primary);
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
     }
 
     #mc_embed_signup .button {
       width: 100%;
-      background: white !important;
-      color: var(--brand-primary) !important;
+      background: var(--brand-gradient) !important;
+      color: white !important;
       border: none;
       padding: 1rem 2rem;
       border-radius: 12px;
@@ -305,26 +709,25 @@
       font-size: 1rem;
       cursor: pointer;
       transition: all 0.2s ease;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--shadow);
       margin: 0;
       height: auto;
     }
 
     #mc_embed_signup .button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-      background: #f8f8f8 !important;
+      box-shadow: var(--shadow-lg);
     }
 
     #mc_embed_signup .indicates-required {
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-size: 0.75rem;
       margin-bottom: 1rem;
       text-align: right;
     }
 
     #mc_embed_signup .asterisk {
-      color: white;
+      color: #ef4444;
     }
 
     #mc_embed_signup #mce-responses {
@@ -342,182 +745,336 @@
     }
 
     #mc_embed_signup #mce-error-response {
-      background: rgba(239, 68, 68, 0.2);
-      color: white;
-      border: 1px solid rgba(239, 68, 68, 0.4);
+      background: #fee2e2;
+      color: #dc2626;
+      border: 1px solid #fecaca;
     }
 
     #mc_embed_signup #mce-success-response {
-      background: rgba(16, 185, 129, 0.2);
-      color: white;
-      border: 1px solid rgba(16, 185, 129, 0.4);
+      background: var(--accent-bg);
+      color: var(--accent);
+      border: 1px solid #86efac;
     }
 
     #mc_embed_signup div.mce_inline_error {
-      background-color: rgba(239, 68, 68, 0.2) !important;
-      color: white !important;
+      background-color: #fee2e2 !important;
+      color: #dc2626 !important;
       padding: 0.5rem !important;
       border-radius: 8px;
       margin-top: 0.5rem !important;
       font-weight: 500 !important;
     }
 
-    /* Doctor Info Section */
-    .doctor-intro {
-      background: var(--card);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      box-shadow: var(--shadow);
-      text-align: center;
-    }
-
-    .doctor-photo {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: var(--brand-gradient);
-      margin: 0 auto 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 2rem;
-      font-weight: 700;
-      box-shadow: var(--shadow);
-    }
-
-    /* Info Section */
-    .info-section {
-      background: var(--card);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      box-shadow: var(--shadow);
-    }
-
-    /* Footer */
-    .footer {
-      text-align: center;
-      color: var(--text-muted);
-      margin-top: 3rem;
-      padding: 2rem 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .footer-disclaimer {
-      font-size: 0.875rem;
-      margin-top: 1rem;
-      opacity: 0.8;
-    }
-
     /* Form description */
     .form-description {
-      opacity: 0.9;
+      color: var(--text-muted);
       margin-bottom: 1.5rem;
       font-size: 0.95rem;
       line-height: 1.5;
     }
 
+    /* Footer */
+    .footer {
+      background: var(--text);
+      color: white;
+      padding: 3rem 0 2rem;
+      margin-top: 0;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-brand h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      opacity: 0.8;
+      line-height: 1.6;
+    }
+
+    .footer-column h4 {
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+      opacity: 0.6;
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-column a {
+      color: white;
+      opacity: 0.8;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .footer-column a:hover {
+      opacity: 1;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 2rem;
+      text-align: center;
+      opacity: 0.6;
+      font-size: 0.875rem;
+    }
+
     /* Responsive Design */
-    @media (max-width: 768px) {
-      .container {
-        padding: 1rem;
-      }
-      
-      .header {
-        flex-direction: column;
-        gap: 1rem;
+    @media (max-width: 1024px) {
+      .hero-content {
+        grid-template-columns: 1fr;
         text-align: center;
       }
-      
-      .hero {
-        padding: 2rem 1.5rem;
+
+      .hero-graphic {
+        max-width: 400px;
       }
-      
-      .card {
-        padding: 1.5rem;
+
+      .doctor-content {
+        grid-template-columns: 1fr;
       }
-      
+
+      .doctor-image-wrapper {
+        position: static;
+      }
+
+      .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .steps-grid::before {
+        display: none;
+      }
+
+      .signup-content {
+        grid-template-columns: 1fr;
+      }
+
       #mc_embed_signup {
-        padding: 1.5rem;
+        position: static;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1rem;
+      }
+      
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .hero {
+        padding: 3rem 0;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .highlight-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header class="header">
-      <div class="logo">
-        <div class="logo-icon">BW</div>
-        <div class="logo-text">Brandywine DPC</div>
+  <!-- Background Decorations -->
+  <div class="bg-circle-1"></div>
+  <div class="bg-circle-2"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <div class="logo-icon">BW</div>
+          <div class="logo-text">Brandywine DPC</div>
+        </div>
+        <button class="header-cta" onclick="document.getElementById('mc_embed_signup').scrollIntoView({behavior: 'smooth'})">
+          Join Waitlist
+        </button>
       </div>
-      <div class="location-badge">New Castle County, DE</div>
-    </header>
+    </div>
+  </header>
 
-    <main>
-      <section class="hero">
-        <div class="coming-soon">Coming Soon</div>
-        <h1>Direct Primary Care<br>Reimagined</h1>
-        <p class="subtitle">Dr. Morgan Katz, DO is bringing personalized, accessible healthcare to New Castle County families – no insurance hassles, just exceptional care.</p>
-      </section>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="coming-soon-badge">
+          ✨ Opening Early 2025
+        </div>
+        <h1>Healthcare That Puts You First</h1>
+        <p class="hero-subtitle">
+          Experience personalized family medicine with Dr. Morgan Katz, DO. 
+          No insurance hassles. No rushed appointments. Just exceptional care 
+          for your whole family in New Castle County, Delaware.
+        </p>
+        <div class="hero-cta-group">
+          <button class="btn-primary" onclick="document.getElementById('mc_embed_signup').scrollIntoView({behavior: 'smooth'})">
+            Reserve Your Spot
+          </button>
+          <button class="btn-secondary" onclick="document.getElementById('doctor-section').scrollIntoView({behavior: 'smooth'})">
+            Meet Dr. Katz
+          </button>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="hero-graphic">
+          <div class="hero-graphic-inner">
+            <div class="hero-graphic-icon">🩺</div>
+            <h3 style="color: var(--text); margin-bottom: 0.5rem;">Direct Primary Care</h3>
+            <p style="color: var(--text-muted); font-size: 0.875rem;">Your health, simplified</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <section class="doctor-intro">
-        <div class="doctor-photo">MK</div>
-        <h2>Meet Dr. Morgan Katz, DO</h2>
-        <p>Board-certified physician bringing years of experience in family medicine to create a new kind of healthcare experience. Dr. Katz is passionate about building lasting relationships with patients and providing the time and attention your family deserves.</p>
-      </section>
+  <!-- Why DPC Section -->
+  <section class="why-dpc-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why Direct Primary Care?</h2>
+        <p>A revolutionary healthcare model that eliminates barriers between you and your doctor</p>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon-large">💰</div>
+          <h3>Transparent Pricing</h3>
+          <p>One affordable monthly membership covers all your primary care needs. No copays, no deductibles, no surprise bills.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon-large">⏰</div>
+          <h3>Same-Day Access</h3>
+          <p>Sick today? See Dr. Katz today. Book online, call, or text for immediate appointments when you need them most.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon-large">⏱️</div>
+          <h3>30-60 Minute Visits</h3>
+          <p>No more rushed 7-minute appointments. Dr. Katz has time to address all your concerns in one comprehensive visit.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon-large">📱</div>
+          <h3>Direct Communication</h3>
+          <p>Text or call Dr. Katz directly. Get answers to questions, medication refills, and follow-ups without the phone tag.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon-large">👨‍👩‍👧‍👦</div>
+          <h3>Family Plans</h3>
+          <p>Affordable family memberships mean everyone gets the care they deserve. Special discounts for families of 3 or more.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon-large">💊</div>
+          <h3>Wholesale Medications</h3>
+          <p>Access to wholesale pricing on common medications, often cheaper than insurance copays.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <div class="main-grid">
-        <div class="card">
-          <h2>Why Choose Direct Primary Care?</h2>
-          
-          <div class="benefit">
-            <div class="benefit-icon">💰</div>
-            <div class="benefit-content">
-              <strong>Transparent Pricing</strong><br>
-              One flat monthly fee covers all primary care visits, basic procedures, and direct access to Dr. Katz.
+  <!-- How It Works Section -->
+  <section class="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <h2>How It Works</h2>
+        <p>Getting started with Direct Primary Care is simple</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h4>Join the Waitlist</h4>
+          <p>Reserve your spot now for priority access when we open in early 2025</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h4>Choose Your Plan</h4>
+          <p>Select an individual or family membership that fits your needs and budget</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h4>Schedule Your Visit</h4>
+          <p>Book your first appointment online, by phone, or via text message</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <h4>Experience Better Care</h4>
+          <p>Enjoy healthcare the way it should be - personal, accessible, and affordable</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Signup Section -->
+  <section class="signup-section">
+    <div class="container">
+      <div class="signup-content">
+        <div class="signup-info">
+          <h2>Join Our Founding Members</h2>
+          <p>
+            Be among the first families to experience healthcare reimagined. 
+            As a founding member, you'll receive priority scheduling, special 
+            pricing, and the opportunity to help shape our practice.
+          </p>
+          <div class="included-list">
+            <div class="included-item">
+              <div class="check-icon">✓</div>
+              <span><strong>Unlimited visits</strong> - See Dr. Katz as often as you need</span>
+            </div>
+            <div class="included-item">
+              <div class="check-icon">✓</div>
+              <span><strong>Direct access</strong> - Text, call, or video chat with Dr. Katz</span>
+            </div>
+            <div class="included-item">
+              <div class="check-icon">✓</div>
+              <span><strong>Extended appointments</strong> - 30-60 minutes per visit</span>
+            </div>
+            <div class="included-item">
+              <div class="check-icon">✓</div>
+              <span><strong>Basic procedures</strong> - EKGs, immunizations, minor wound care</span>
+            </div>
+            <div class="included-item">
+              <div class="check-icon">✓</div>
+              <span><strong>Care coordination</strong> - Referrals and specialist coordination</span>
             </div>
           </div>
-
-          <div class="benefit">
-            <div class="benefit-icon">⏰</div>
-            <div class="benefit-content">
-              <strong>Same-Day Access</strong><br>
-              Need to be seen today? No problem. Text, call, or schedule online for same or next-day appointments.
-            </div>
-          </div>
-
-          <div class="benefit">
-            <div class="benefit-icon">👨‍⚕️</div>
-            <div class="benefit-content">
-              <strong>Longer Visits</strong><br>
-              30-60 minute appointments mean Dr. Katz has time to really listen and address all your concerns.
-            </div>
-          </div>
-
-          <div class="benefit">
-            <div class="benefit-icon">📱</div>
-            <div class="benefit-content">
-              <strong>Direct Communication</strong><br>
-              Text or call Dr. Katz directly for questions, follow-ups, and urgent concerns between visits.
-            </div>
-          </div>
-
-          <div class="benefit">
-            <div class="benefit-icon">👨‍👩‍👧‍👦</div>
-            <div class="benefit-content">
-              <strong>Family-Focused Care</strong><br>
-              Comprehensive care for all ages, from pediatrics to geriatrics, with family discounts available.
-            </div>
-          </div>
-
-          <p style="margin-top: 2rem; color: var(--text-muted); font-size: 0.9rem;">
-            <strong>Opening in 2026</strong> – Join our waitlist to receive updates about membership availability, pricing details, and exclusive early access to appointments.
+          <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 2rem;">
+            <em>Note: DPC memberships complement your existing catastrophic or employer insurance 
+            for hospitalizations and specialist care. Many members save money by combining DPC 
+            with a high-deductible health plan.</em>
           </p>
         </div>
 
@@ -525,8 +1082,8 @@
         <div id="mc_embed_signup">
           <form action="https://gmail.us3.list-manage.com/subscribe/post?u=28d9c6d094be6496bf7ce6613&amp;id=72bcd7bf17&amp;f_id=00d099e3f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
             <div id="mc_embed_signup_scroll">
-              <h2>Join the Waitlist</h2>
-              <p class="form-description">Be the first to know when Dr. Katz begins accepting new patients. We'll keep you updated on opening date, membership pricing, and give you priority access.</p>
+              <h2>Reserve Your Spot</h2>
+              <p class="form-description">Join our waitlist to be notified when enrollment opens. Founding members will receive special pricing and benefits.</p>
               <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
               
               <div class="mc-field-group">
@@ -567,28 +1124,46 @@
         </div>
         <!--End mc_embed_signup-->
       </div>
+    </div>
+  </section>
 
-      <section class="info-section">
-        <h3>How Direct Primary Care Works</h3>
-        <p>Direct Primary Care (DPC) is a membership-based healthcare model that puts the doctor-patient relationship first. Instead of dealing with insurance for routine care, members pay a simple monthly fee that covers:</p>
-        <ul style="margin: 1rem 0 1rem 2rem; color: var(--text-muted);">
-          <li>All office visits and consultations</li>
-          <li>Basic procedures and screenings</li>
-          <li>Care coordination and referrals</li>
-          <li>Direct access to your physician</li>
-          <li>Wholesale pricing on medications when available</li>
-        </ul>
-        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 1.5rem;">
-          <em>Note: DPC memberships work alongside catastrophic insurance or health sharing plans for emergencies and specialist care.</em>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h3>Brandywine Direct Primary Care</h3>
+          <p>
+            Reimagining healthcare for New Castle County families. 
+            Opening early 2025 with Dr. Morgan Katz, DO.
+          </p>
+        </div>
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#doctor-section">About Dr. Katz</a></li>
+            <li><a href="#mc_embed_signup">Join Waitlist</a></li>
+            <li><a href="#" onclick="alert('Contact information coming soon!')">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Practice Information</h4>
+          <ul>
+            <li>Family Medicine</li>
+            <li>All Ages Welcome</li>
+            <li>Opening Early 2025</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="currentYear"></span> Brandywine Direct Primary Care. All rights reserved.</p>
+        <p style="margin-top: 0.5rem;">
+          This website is for informational purposes only and does not constitute medical advice. 
+          Dr. Morgan Katz, DO is not currently accepting patients but will begin practice in early 2025.
         </p>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <p>&copy; <span id="currentYear"></span> Brandywine Direct Primary Care</p>
-      <p class="footer-disclaimer">This website is for informational purposes only and does not constitute medical advice. Dr. Morgan Katz, DO is not currently accepting patients but will begin practice in 2026.</p>
-    </footer>
-  </div>
+      </div>
+    </div>
+  </footer>
 
   <!-- Mailchimp Form Validation Script -->
   <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
@@ -605,6 +1180,23 @@
     
     // Set current year
     document.getElementById('currentYear').textContent = new Date().getFullYear();
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }
+      });
+    });
   </script>
 </body>
 </html>
