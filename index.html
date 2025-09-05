@@ -1,111 +1,517 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Brandywine DPC — New Castle County, DE</title>
-  <meta name="description" content="Brandywine Direct Primary Care — membership-based family medicine in New Castle County, Delaware. Join the waitlist." />
-  <link rel="icon" href="assets/favicon.svg" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brandywine Direct Primary Care — Dr. Morgan Katz, DO</title>
+  <meta name="description" content="Dr. Morgan Katz, DO is launching Brandywine Direct Primary Care — membership-based family medicine in New Castle County, Delaware. Experience personalized, accessible healthcare without the hassle of insurance.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#fbfdff;--card:#fff;--text:#072144;--muted:#5b6b7a;--brand:#0d9bd6;--ok:#16a34a;--ring:rgba(13,155,214,.18)}
-    *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.45}
-    .wrap{max-width:980px;margin:28px auto;padding:20px}
-    .nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
-    .logo{display:flex;gap:12px;align-items:center;font-weight:700}
-    .badge{background:#eff8ff;color:#034e6d;padding:6px 10px;border-radius:999px;font-weight:700;font-size:13px}
-    .hero{background:var(--card);border-radius:14px;padding:26px;box-shadow:0 8px 24px rgba(2,8,23,.06);margin-bottom:18px}
-    h1{font-size:clamp(26px,4.5vw,38px);margin:0 0 8px}
-    p.lead{margin:0;color:var(--muted);font-size:16px}
-    .grid{display:grid;grid-template-columns:1fr 380px;gap:18px;margin-top:18px}
-    @media(max-width:940px){.grid{grid-template-columns:1fr}}
-    .card{background:var(--card);padding:18px;border-radius:12px;border:1px solid #e6eef5}
-    .benefit{display:flex;gap:12px;margin:12px 0}
-    .dot{width:12px;height:12px;border-radius:50%;background:var(--ok);margin-top:6px}
-    label{display:block;font-weight:600;margin-top:10px;margin-bottom:6px}
-    input,select,textarea,button{width:100%;padding:10px 12px;border-radius:10px;border:1px solid #d1e3ef;font-size:15px}
-    input:focus,select:focus,textarea:focus{outline:none;box-shadow:0 0 0 6px var(--ring);border-color:var(--brand)}
-    .cta{background:var(--brand);color:#fff;border:none;padding:12px 14px;border-radius:12px;font-weight:700;cursor:pointer}
-    footer{margin-top:16px;text-align:center;color:var(--muted);font-size:13px}
-    .fine{color:var(--muted);font-size:13px}
+    :root {
+      --bg: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+      --card: rgba(255, 255, 255, 0.95);
+      --card-border: rgba(255, 255, 255, 0.2);
+      --text: #0f172a;
+      --text-muted: #475569;
+      --brand-primary: #0ea5e9;
+      --brand-secondary: #06b6d4;
+      --brand-gradient: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+      --accent: #10b981;
+      --accent-bg: #ecfdf5;
+      --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      --ring: rgba(14, 165, 233, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3rem;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 16px;
+      background: var(--brand-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      font-size: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .location-badge {
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      color: var(--brand-primary);
+      padding: 0.75rem 1.25rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      box-shadow: var(--shadow);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 3rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-lg);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--brand-gradient);
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero .subtitle {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .coming-soon {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent-bg);
+      color: var(--accent);
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+    }
+
+    .coming-soon::before {
+      content: '🎉';
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+
+    /* Main Content Grid */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 1024px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .card h2, .card h3 {
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    /* Benefits */
+    .benefit {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: rgba(14, 165, 233, 0.03);
+      border-radius: 12px;
+      border-left: 3px solid var(--brand-primary);
+    }
+
+    .benefit-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .benefit-content strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* Form Styles */
+    .form-section {
+      background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+      color: white;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .form-section h3 {
+      color: white;
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .form-description {
+      opacity: 0.9;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: white;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      color: white;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .form-group input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: white;
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: white;
+      color: var(--brand-primary);
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Doctor Info Section */
+    .doctor-intro {
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .doctor-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: var(--brand-gradient);
+      margin: 0 auto 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2rem;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+    }
+
+    /* Info Section */
+    .info-section {
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      color: var(--text-muted);
+      margin-top: 3rem;
+      padding: 2rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .footer-disclaimer {
+      font-size: 0.875rem;
+      margin-top: 1rem;
+      opacity: 0.8;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      
+      .header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      
+      .hero {
+        padding: 2rem 1.5rem;
+      }
+      
+      .card {
+        padding: 1.5rem;
+      }
+      
+      .form-section {
+        padding: 1.5rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header class="nav">
+  <div class="container">
+    <header class="header">
       <div class="logo">
-        <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#60c6d9,#aee6c9);display:grid;place-items:center;color:white;font-weight:800">BW</div>
-        <div>Brandywine DPC</div>
+        <div class="logo-icon">BW</div>
+        <div class="logo-text">Brandywine DPC</div>
       </div>
-      <div class="badge">New Castle County, DE</div>
+      <div class="location-badge">New Castle County, DE</div>
     </header>
 
     <main>
-      <section class="hero card">
-        <h1>Direct Primary Care for families who want simple, attentive care</h1>
-        <p class="lead">Membership-based primary care in New Castle County — predictable pricing, same/next-day access, and longer visits focused on prevention and reassurance.</p>
+      <section class="hero">
+        <div class="coming-soon">Coming Soon</div>
+        <h1>Direct Primary Care<br>Reimagined</h1>
+        <p class="subtitle">Dr. Morgan Katz, DO is bringing personalized, accessible healthcare to New Castle County families — no insurance hassles, just exceptional care.</p>
       </section>
 
-      <section class="grid">
+      <section class="doctor-intro">
+        <div class="doctor-photo">MK</div>
+        <h2>Meet Dr. Morgan Katz, DO</h2>
+        <p>Board-certified physician bringing years of experience in family medicine to create a new kind of healthcare experience. Dr. Katz is passionate about building lasting relationships with patients and providing the time and attention your family deserves.</p>
+      </section>
+
+      <div class="main-grid">
         <div class="card">
-          <h2>Why Brandywine DPC</h2>
-          <div class="benefit"><div class="dot"></div><div><strong>Flat monthly membership</strong> — no surprise bills, clear pricing.</div></div>
-          <div class="benefit"><div class="dot"></div><div><strong>Access when you need it</strong> — same/next-day visits, phone & text as appropriate.</div></div>
-          <div class="benefit"><div class="dot"></div><div><strong>Family-first care</strong> — longer visits and continuity for your family.</div></div>
-          <p class="fine" style="margin-top:14px">We’re preparing to open in New Castle County. Join the waitlist to be the first to know when membership opens.</p>
-        </div>
-
-        <aside class="card">
-          <h3 style="margin-top:0">Join the waitlist</h3>
-          <div class="fine" style="margin-bottom:10px">We’ll email you updates — expected opening, pricing, and launch invitations.</div>
-
-          <!-- MAILCHIMP EMBED: replace the div below with the full Mailchimp embed code -->
-          <div id="mc_embed_signup">
-            <div id="mc_embed_shell">
-      <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
-  <style type="text/css">
-        #mc_embed_signup{background:#fff; false;clear:left; font:14px Helvetica,Arial,sans-serif; width: 600px;}
-        /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
-           We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-</style>
-<div id="mc_embed_signup">
-    <form action="https://gmail.us3.list-manage.com/subscribe/post?u=28d9c6d094be6496bf7ce6613&amp;id=72bcd7bf17&amp;f_id=00d099e3f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-        <div id="mc_embed_signup_scroll"><h2>Subscribe</h2>
-            <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
-            <div class="mc-field-group"><label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div><div class="mc-field-group"><label for="mce-FNAME">First Name <span class="asterisk">*</span></label><input type="text" name="FNAME" class="required text" id="mce-FNAME" required="" value=""></div><div class="mc-field-group"><label for="mce-LNAME">Last Name <span class="asterisk">*</span></label><input type="text" name="LNAME" class="required text" id="mce-LNAME" required="" value=""></div><div class="mc-field-group"><label for="mce-PHONE">Phone Number <span class="asterisk">*</span></label><input type="text" name="PHONE" class="REQ_CSS" id="mce-PHONE" value=""></div>
-        <div id="mce-responses" class="clear foot">
-            <div class="response" id="mce-error-response" style="display: none;"></div>
-            <div class="response" id="mce-success-response" style="display: none;"></div>
-        </div>
-    <div style="position: absolute; left: -5000px;" aria-hidden="true">
-        /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
-        <input type="text" name="b_28d9c6d094be6496bf7ce6613_72bcd7bf17" tabindex="-1" value="">
-    </div>
-          <div class="optionalParent">
-            <div class="clear foot">
-                <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe">
+          <h2>Why Choose Direct Primary Care?</h2>
+          
+          <div class="benefit">
+            <div class="benefit-icon">💰</div>
+            <div class="benefit-content">
+              <strong>Transparent Pricing</strong><br>
+              One flat monthly fee covers all primary care visits, basic procedures, and direct access to Dr. Katz.
             </div>
-        </div>
-    </div>
-</form>
-</div>
-<script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[4]='PHONE';ftypes[4]='phone';fnames[3]='ADDRESS';ftypes[3]='address';fnames[5]='BIRTHDAY';ftypes[5]='birthday';fnames[6]='COMPANY';ftypes[6]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script></div>
-
           </div>
 
-        </aside>
-      </section>
+          <div class="benefit">
+            <div class="benefit-icon">⏰</div>
+            <div class="benefit-content">
+              <strong>Same-Day Access</strong><br>
+              Need to be seen today? No problem. Text, call, or schedule online for same or next-day appointments.
+            </div>
+          </div>
 
-      <section style="margin-top:16px" class="card">
+          <div class="benefit">
+            <div class="benefit-icon">👨‍⚕️</div>
+            <div class="benefit-content">
+              <strong>Longer Visits</strong><br>
+              30-60 minute appointments mean Dr. Katz has time to really listen and address all your concerns.
+            </div>
+          </div>
+
+          <div class="benefit">
+            <div class="benefit-icon">📱</div>
+            <div class="benefit-content">
+              <strong>Direct Communication</strong><br>
+              Text or call Dr. Katz directly for questions, follow-ups, and urgent concerns between visits.
+            </div>
+          </div>
+
+          <div class="benefit">
+            <div class="benefit-icon">👨‍👩‍👧‍👦</div>
+            <div class="benefit-content">
+              <strong>Family-Focused Care</strong><br>
+              Comprehensive care for all ages, from pediatrics to geriatrics, with family discounts available.
+            </div>
+          </div>
+
+          <p style="margin-top: 2rem; color: var(--text-muted); font-size: 0.9rem;">
+            <strong>Opening Early 2025</strong> — Join our waitlist to receive updates about membership availability, pricing details, and exclusive early access to appointments.
+          </p>
+        </div>
+
+        <aside class="form-section">
+          <h3>Join the Waitlist</h3>
+          <p class="form-description">Be the first to know when Dr. Katz begins accepting new patients. We'll keep you updated on opening date, membership pricing, and give you priority access.</p>
+          
+          <form action="#" method="post" id="waitlist-form">
+            <div class="form-group">
+              <label for="firstName">First Name *</label>
+              <input type="text" id="firstName" name="firstName" required placeholder="Your first name">
+            </div>
+            
+            <div class="form-group">
+              <label for="lastName">Last Name *</label>
+              <input type="text" id="lastName" name="lastName" required placeholder="Your last name">
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" required placeholder="your@email.com">
+            </div>
+            
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(302) 555-0123">
+            </div>
+            
+            <button type="submit" class="submit-btn">Join Waitlist</button>
+          </form>
+        </aside>
+      </div>
+
+      <section class="info-section">
         <h3>How Direct Primary Care Works</h3>
-        <p class="fine">Members pay a flat monthly fee for comprehensive primary care. No copays for visits covered by membership; transparent care and stronger doctor relationships.</p>
+        <p>Direct Primary Care (DPC) is a membership-based healthcare model that puts the doctor-patient relationship first. Instead of dealing with insurance for routine care, members pay a simple monthly fee that covers:</p>
+        <ul style="margin: 1rem 0 1rem 2rem; color: var(--text-muted);">
+          <li>All office visits and consultations</li>
+          <li>Basic procedures and screenings</li>
+          <li>Care coordination and referrals</li>
+          <li>Direct access to your physician</li>
+          <li>Wholesale pricing on medications when available</li>
+        </ul>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 1.5rem;">
+          <em>Note: DPC memberships work alongside catastrophic insurance or health sharing plans for emergencies and specialist care.</em>
+        </p>
       </section>
     </main>
 
-    <footer>
-      © <span id="y"></span> Brandywine DPC · Serving New Castle County. <div class="fine">This website is for information only and does not provide medical advice.</div>
+    <footer class="footer">
+      <p>&copy; <span id="currentYear"></span> Brandywine Direct Primary Care</p>
+      <p class="footer-disclaimer">This website is for informational purposes only and does not constitute medical advice. Dr. Morgan Katz, DO is not currently accepting patients but will begin practice in early 2025.</p>
     </footer>
   </div>
 
-  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+  <script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    
+    // Simple form handling
+    document.getElementById('waitlist-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for your interest! We\'ll be in touch soon with updates about Dr. Katz\'s practice opening.');
+    });
+  </script>
 </body>
 </html>
