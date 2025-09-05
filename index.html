@@ -507,10 +507,53 @@
   <script>
     document.getElementById('currentYear').textContent = new Date().getFullYear();
     
-    // Simple form handling
+    // MailChimp form validation and submission
+    (function($) {
+      // Set up field name and type arrays for MailChimp validation
+      window.fnames = new Array(); 
+      window.ftypes = new Array();
+      fnames[0]='EMAIL';ftypes[0]='email';
+      fnames[1]='FNAME';ftypes[1]='text';
+      fnames[2]='LNAME';ftypes[2]='text';
+      fnames[3]='PHONE';ftypes[3]='phone';
+    }(window.jQuery || function() {
+      // jQuery fallback for MailChimp validation
+      return {
+        fn: {
+          ready: function(fn) { fn(); }
+        }
+      };
+    }));
+
+    // Enhanced form handling with better UX
     document.getElementById('waitlist-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Thank you for your interest! We\'ll be in touch soon with updates about Dr. Katz\'s practice opening.');
+      const form = this;
+      const submitBtn = form.querySelector('.submit-btn');
+      const originalBtnText = submitBtn.textContent;
+      
+      // Show loading state
+      submitBtn.textContent = 'Joining...';
+      submitBtn.disabled = true;
+      
+      // If MailChimp URL is not configured, show message
+      if (form.action.includes('YOUR_MAILCHIMP_ACTION_URL')) {
+        e.preventDefault();
+        alert('MailChimp integration needs to be configured. Please update the form action URL with your MailChimp details.');
+        submitBtn.textContent = originalBtnText;
+        submitBtn.disabled = false;
+        return;
+      }
+      
+      // For actual MailChimp integration, let the form submit naturally
+      // The target="_blank" will handle the redirect
+      setTimeout(() => {
+        submitBtn.textContent = 'Thank you!';
+        setTimeout(() => {
+          submitBtn.textContent = originalBtnText;
+          submitBtn.disabled = false;
+          form.reset();
+        }, 2000);
+      }, 1000);
     });
   </script>
 </body>
