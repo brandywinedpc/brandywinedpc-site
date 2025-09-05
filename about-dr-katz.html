@@ -113,33 +113,38 @@
 
     .header-nav {
       display: flex;
-      gap: 1rem;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    
+    .header-nav-link {
+      color: var(--text-muted);
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    
+    .header-nav-link:hover {
+      color: var(--brand-primary);
     }
 
-    .nav-link {
-      background: white;
-      color: var(--brand-primary);
+    .header-cta {
+      background: var(--brand-gradient);
+      color: white;
       padding: 0.625rem 1.5rem;
       border-radius: 50px;
       font-weight: 600;
       font-size: 0.875rem;
       text-decoration: none;
       transition: all 0.3s ease;
-      border: 2px solid var(--brand-primary);
-    }
-
-    .nav-link:hover {
-      background: var(--brand-gradient);
-      color: white;
-      border-color: transparent;
-      transform: translateY(-2px);
       box-shadow: var(--shadow);
+      cursor: pointer;
+      border: none;
     }
 
-    .nav-link.primary {
-      background: var(--brand-gradient);
-      color: white;
-      border-color: transparent;
+    .header-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
     }
 
     /* Hero Section */
@@ -587,13 +592,18 @@
           <div class="logo-text">Brandywine DPC</div>
         </a>
         <nav class="header-nav">
-          <a href="index.html" class="nav-link">Home</a>
-          <a href="index.html#mc_embed_signup" class="nav-link primary">Join Waitlist</a>
+          <a href="about-dr-katz.html" class="header-nav-link">About</a>
+          <a href="pricing.html" class="header-nav-link">Pricing</a>
+          <a href="faq.html" class="header-nav-link">FAQ</a>
+          <a href="contact-us.html" class="header-nav-link">Contact Us</a>
+          <button class="header-cta" onclick="document.getElementById('mc_embed_signup').scrollIntoView({behavior: 'smooth'})">
+            Join Waitlist
+          </button>
         </nav>
       </div>
     </div>
   </header>
-
+  
   <!-- Doctor Hero Section -->
   <section class="doctor-hero">
     <div class="container">
@@ -601,7 +611,7 @@
       <p class="doctor-tagline">Your Partner in Whole-Family Healthcare</p>
       <div class="credentials-row">
         <span class="credential-badge">Board-Certified Family Medicine</span>
-        <span class="credential-badge">Former Chief Resident</span>
+        <span class="credential-badge">Obesity Medicine</span>
         <span class="credential-badge">AAFP Member</span>
       </div>
     </div>
@@ -613,18 +623,16 @@
     <aside class="sidebar">
       <div class="doctor-photo-card">
         <div class="doctor-photo">
-          <span></span>
           <img src="katz-morgan-1184183154.jpg" alt="Dr. Morgan Katz, DO" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
-        </div>
         <div class="doctor-photo-info">
           <div class="info-item">
             <div class="info-icon">📍</div>
-            <span>New Castle County, Delaware</span>
+            <span>Wilmington, Delaware</span>
           </div>
           <div class="info-item">
             <div class="info-icon">👨‍👩‍👧‍👦</div>
-            <span>All Ages Welcome (2+)</span>
+            <span>All Ages Welcome</span>
           </div>
           <div class="info-item">
             <div class="info-icon">🗣️</div>
@@ -738,28 +746,20 @@
         
         <div class="timeline">
           <div class="timeline-item">
-            <div class="timeline-year">2022</div>
             <div class="timeline-title">Chief Resident</div>
             <div class="timeline-institution">Jefferson Health-Abington Hospital</div>
-            <div class="timeline-details">Led resident education and quality improvement initiatives</div>
           </div>
           <div class="timeline-item">
-            <div class="timeline-year">2019-2022</div>
             <div class="timeline-title">Family Medicine Residency</div>
             <div class="timeline-institution">Jefferson Health-Abington Hospital</div>
-            <div class="timeline-details">Comprehensive training in all aspects of family medicine</div>
           </div>
           <div class="timeline-item">
-            <div class="timeline-year">2019</div>
             <div class="timeline-title">Doctor of Osteopathic Medicine</div>
             <div class="timeline-institution">Philadelphia College of Osteopathic Medicine</div>
-            <div class="timeline-details">Focus on holistic, patient-centered care</div>
           </div>
           <div class="timeline-item">
-            <div class="timeline-year">2015</div>
             <div class="timeline-title">Bachelor of Arts</div>
             <div class="timeline-institution">University of Virginia</div>
-            <div class="timeline-details">Dual major in Biology and Political Sciences</div>
           </div>
         </div>
       </div>

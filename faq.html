@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frequently Asked Questions - Brandywine Direct Primary Care</title>
+  <meta name="description" content="Find answers to common questions about Direct Primary Care and our practice with Dr. Morgan Katz, DO.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-gradient: linear-gradient(180deg, #ffffff 0%, #f0f9ff 40%, #e0f2fe 100%);
+      --card: rgba(255, 255, 255, 0.98);
+      --card-border: rgba(148, 163, 184, 0.12);
+      --text: #0f172a;
+      --text-muted: #475569;
+      --text-light: #64748b;
+      --brand-primary: #0ea5e9;
+      --brand-secondary: #06b6d4;
+      --brand-gradient: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+      --accent: #10b981;
+      --accent-light: #34d399;
+      --accent-bg: #ecfdf5;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Background Decorations */
+    .bg-circle-1 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.06) 0%, transparent 70%);
+      top: -300px;
+      right: -200px;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+    }
+
+    /* Header */
+    .header {
+      position: relative;
+      z-index: 10;
+      padding: 2rem 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--brand-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      font-size: 1.125rem;
+      box-shadow: var(--shadow);
+    }
+
+    .logo-text {
+      font-size: 1.375rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    
+    .header-nav-link {
+      color: var(--text-muted);
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    
+    .header-nav-link:hover,
+    .header-nav-link.active {
+      color: var(--brand-primary);
+    }
+
+    .header-cta {
+      background: var(--brand-gradient);
+      color: white;
+      padding: 0.625rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      border: none;
+    }
+
+    .header-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Hero Section */
+    .faq-hero {
+      padding: 4rem 0;
+      background: var(--bg-gradient);
+      text-align: center;
+    }
+
+    .faq-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      margin-bottom: 1rem;
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .faq-hero p {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      padding: 5rem 0;
+      background: white;
+    }
+    
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .faq-item {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s ease;
+    }
+    
+    .faq-question:hover {
+      background: #f8fafc;
+    }
+    
+    .faq-question-icon {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+    }
+    
+    .faq-question.active .faq-question-icon {
+      transform: rotate(45deg);
+    }
+    
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 1.5rem;
+      transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    }
+    
+    .faq-answer.active {
+      max-height: 500px; /* Adjust as needed */
+      padding: 1.5rem;
+    }
+    
+    .faq-answer p {
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    
+    .faq-answer ul {
+      margin-top: 1rem;
+      margin-left: 2rem;
+      color: var(--text-muted);
+    }
+    
+    .faq-answer ul li {
+      margin-bottom: 0.5rem;
+    }
+    
+    /* CTA Section */
+    .cta-section {
+      padding: 4rem 0;
+      background: var(--bg-gradient);
+      text-align: center;
+    }
+
+    .cta-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cta-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .cta-content p {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn-primary {
+      background: var(--brand-gradient);
+      color: white;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--text);
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+    }
+
+    .footer p {
+      opacity: 0.8;
+      font-size: 0.875rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .header-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .faq-hero h1 {
+        font-size: 2rem;
+      }
+      
+      .faq-question {
+        font-size: 1rem;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn-primary {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-circle-1"></div>
+
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <a href="index.html" class="logo">
+          <div class="logo-icon">BW</div>
+          <div class="logo-text">Brandywine DPC</div>
+        </a>
+        <nav class="header-nav">
+          <a href="about-dr-katz.html" class="header-nav-link">About</a>
+          <a href="pricing.html" class="header-nav-link">Pricing</a>
+          <a href="faq.html" class="header-nav-link active">FAQ</a>
+          <a href="contact-us.html" class="header-nav-link">Contact Us</a>
+          <button class="header-cta" onclick="window.location.href='index.html#mc_embed_signup'">
+            Join Waitlist
+          </button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="faq-hero">
+    <div class="container">
+      <h1>Frequently Asked Questions</h1>
+      <p>Answers to some of the most common questions about Direct Primary Care and our practice.</p>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <div class="container">
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">
+            What is Direct Primary Care (DPC)?
+            <span class="faq-question-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Direct Primary Care is an innovative alternative payment model that improves healthcare by allowing for a direct, recurring relationship between patients and their primary care physician. Rather than billing insurance companies, DPC practices charge patients a flat monthly or annual fee that covers a wide range of primary care services. This model eliminates the administrative burden of insurance, allowing doctors to focus on what matters most: patient care.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            How is DPC different from traditional healthcare?
+            <span class="faq-question-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>In traditional, insurance-based healthcare, your doctor's time and services are dictated by insurance company rules and billing codes. This often leads to short, rushed appointments and a lack of direct communication. DPC removes these barriers, offering:</p>
+            <ul>
+              <li><strong>Extended Appointments:</strong> Visits last 30-60 minutes, giving you and your doctor time to discuss all your concerns.</li>
+              <li><strong>Direct Access:</strong> You can contact Dr. Katz directly via text, phone, or email, often for same-day or next-day answers.</li>
+              <li><strong>Transparent Costs:</strong> You pay one affordable monthly fee, with no copays, no surprise bills, and no insurance claims for your primary care.</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            Do I still need health insurance?
+            <span class="faq-question-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Yes. DPC is not a substitute for health insurance. We strongly recommend that all our patients maintain a health insurance plan, such as a high-deductible plan or a catastrophic plan. Your DPC membership covers routine primary care, while your insurance is essential for emergencies, hospitalizations, surgeries, and specialist care. Many of our patients find they can save money by pairing a DPC membership with a high-deductible health plan, as the lower monthly premium often outweighs the cost of the DPC membership.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            What services are included in the membership fee?
+            <span class="faq-question-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>The membership fee covers a wide range of services, including:</p>
+            <ul>
+              <li>Unlimited office visits and extended appointments</li>
+              <li>Direct access to Dr. Katz via phone, text, or email</li>
+              <li>Same-day or next-day appointments for urgent needs</li>
+              <li>Annual wellness exams and preventive care</li>
+              <li>Chronic disease management (e.g., hypertension, diabetes)</li>
+              <li>Minor procedures (e.g., laceration repair, skin tag removal)</li>
+              <li>In-house lab draws and certain point-of-care tests</li>
+            </ul>
+            <p><em>(Note: Some services may require an additional charge, but these will be discussed with you in advance.)</em></p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            Will Brandywine DPC accept my insurance?
+            <span class="faq-question-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>No. By not accepting insurance, we can practice medicine the way it was meant to be—with you, the patient, at the center. We will provide you with a detailed invoice that you can submit to your insurance company for potential reimbursement, depending on your plan. However, we cannot guarantee reimbursement, and the responsibility for payment remains with you.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Experience Better Healthcare?</h2>
+        <p>
+          Join Dr. Katz and the Brandywine DPC family for personalized, 
+          accessible primary care that puts your health first.
+        </p>
+        <div class="cta-buttons">
+          <a href="index.html#mc_embed_signup" class="btn-primary">Join the Waitlist</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <span id="currentYear"></span> Brandywine Direct Primary Care. All rights reserved.</p>
+      <p style="margin-top: 0.5rem;">
+        Dr. Morgan Katz, DO will begin accepting patients in 2026.
+      </p>
+    </div>
+  </footer>
+  
+  <script>
+    // Set current year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    
+    // FAQ Accordion Script
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+      
+      question.addEventListener('click', () => {
+        const isActive = question.classList.contains('active');
+        
+        // Close all other open answers
+        faqItems.forEach(otherItem => {
+          const otherQuestion = otherItem.querySelector('.faq-question');
+          const otherAnswer = otherItem.querySelector('.faq-answer');
+          if (otherQuestion !== question) {
+            otherQuestion.classList.remove('active');
+            otherAnswer.classList.remove('active');
+          }
+        });
+        
+        // Toggle the clicked item
+        question.classList.toggle('active');
+        answer.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us - Brandywine Direct Primary Care</title>
+  <meta name="description" content="Contact Brandywine Direct Primary Care to learn more about our practice and join our waitlist for personalized healthcare in New Castle County, Delaware.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-gradient: linear-gradient(180deg, #ffffff 0%, #f0f9ff 40%, #e0f2fe 100%);
+      --card: rgba(255, 255, 255, 0.98);
+      --card-border: rgba(148, 163, 184, 0.12);
+      --text: #0f172a;
+      --text-muted: #475569;
+      --text-light: #64748b;
+      --brand-primary: #0ea5e9;
+      --brand-secondary: #06b6d4;
+      --brand-gradient: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+      --accent: #10b981;
+      --accent-light: #34d399;
+      --accent-bg: #ecfdf5;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    /* Background Decorations */
+    .bg-circle-1 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.06) 0%, transparent 70%);
+      top: -300px;
+      right: -200px;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+    }
+    
+    .bg-circle-2 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.05) 0%, transparent 70%);
+      bottom: 100px;
+      left: -100px;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+    }
+
+    /* Header */
+    .header {
+      position: relative;
+      z-index: 10;
+      padding: 2rem 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--brand-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      font-size: 1.125rem;
+      box-shadow: var(--shadow);
+    }
+
+    .logo-text {
+      font-size: 1.375rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    
+    .header-nav-link {
+      color: var(--text-muted);
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    
+    .header-nav-link:hover,
+    .header-nav-link.active {
+      color: var(--brand-primary);
+    }
+
+    .header-cta {
+      background: var(--brand-gradient);
+      color: white;
+      padding: 0.625rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      border: none;
+    }
+
+    .header-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Hero Section */
+    .contact-hero {
+      padding: 4rem 0;
+      background: var(--bg-gradient);
+      text-align: center;
+    }
+
+    .contact-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      margin-bottom: 1rem;
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .contact-hero p {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding: 5rem 0;
+      background: white;
+    }
+
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .contact-info {
+      background: var(--bg-gradient);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-info h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+    
+    .contact-info p {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .info-item {
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    .info-icon-large {
+      width: 56px;
+      height: 56px;
+      background: var(--brand-gradient);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .info-text h3 {
+      font-size: 1.125rem;
+      margin-bottom: 0.25rem;
+      color: var(--text);
+    }
+
+    .info-text p {
+      margin: 0;
+      color: var(--text-muted);
+    }
+
+    .contact-form {
+      background: white;
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-form h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+      font-size: 0.875rem;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      background: white;
+      color: var(--text);
+      font-size: 1rem;
+      transition: all 0.2s ease;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--brand-primary);
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+    }
+    
+    .form-group textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    .submit-button {
+      width: 100%;
+      background: var(--brand-gradient);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow);
+    }
+    
+    .submit-button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--text);
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+    }
+
+    .footer p {
+      opacity: 0.8;
+      font-size: 0.875rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .contact-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .header-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .contact-hero h1 {
+        font-size: 2rem;
+      }
+      
+      .contact-info,
+      .contact-form {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-circle-1"></div>
+  <div class="bg-circle-2"></div>
+
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <a href="index.html" class="logo">
+          <div class="logo-icon">BW</div>
+          <div class="logo-text">Brandywine DPC</div>
+        </a>
+        <nav class="header-nav">
+          <a href="about-dr-katz.html" class="header-nav-link">About</a>
+          <a href="pricing.html" class="header-nav-link">Pricing</a>
+          <a href="faq.html" class="header-nav-link">FAQ</a>
+          <a href="contact-us.html" class="header-nav-link active">Contact Us</a>
+          <button class="header-cta" onclick="window.location.href='index.html#mc_embed_signup'">
+            Join Waitlist
+          </button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="contact-hero">
+    <div class="container">
+      <h1>Let's Connect</h1>
+      <p>Whether you have a question about Direct Primary Care or want to join our waitlist, we're here to help.</p>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-content">
+        <div class="contact-info">
+          <h2>Contact Information</h2>
+          <p>
+            We're a new practice and will be accepting patients in 2026. 
+            For now, the best way to connect is through our waitlist.
+          </p>
+          <div class="info-list">
+            <div class="info-item">
+              <div class="info-icon-large">🏠</div>
+              <div class="info-text">
+                <h3>Our Address</h3>
+                <p>
+                  123 Brandywine Road, Suite 100<br>
+                  Wilmington, DE 19808
+                </p>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon-large">📧</div>
+              <div class="info-text">
+                <h3>Email</h3>
+                <p>brandywinedpc@gmail.com</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon-large">📞</div>
+              <div class="info-text">
+                <h3>Phone</h3>
+                <p>(302) 555-1234</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-form">
+          <h2>Send us a Message</h2>
+          <form action="https://api.web3forms.com/submit" method="POST">
+
+            <!-- Replace with your Access Key -->
+          <input type="hidden" name="access_key" value="cdcdabb7-57a1-40a3-9680-48c15336f0be">
+
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" name="message" required></textarea>
+              <!-- Honeypot Spam Protection -->
+              <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+            </div>
+            <!-- Custom Confirmation / Success Page -->
+            <input type="hidden" name="redirect" value="https://mywebsite.com/thanks.html"> -->
+
+            <button type="submit" class="submit-button">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <span id="currentYear"></span> Brandywine Direct Primary Care. All rights reserved.</p>
+      <p style="margin-top: 0.5rem;">
+        Dr. Morgan Katz, DO will begin accepting patients in 2026.
+      </p>
+    </div>
+  </footer>
+  
+  <script>
+    // Set current year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
