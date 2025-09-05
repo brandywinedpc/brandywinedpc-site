@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Brandywine DPC — New Castle County, DE</title>
+  <meta name="description" content="Brandywine Direct Primary Care — membership-based family medicine in New Castle County, Delaware. Join the waitlist." />
+  <link rel="icon" href="assets/favicon.svg" />
+  <style>
+    :root{--bg:#fbfdff;--card:#fff;--text:#072144;--muted:#5b6b7a;--brand:#0d9bd6;--ok:#16a34a;--ring:rgba(13,155,214,.18)}
+    *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.45}
+    .wrap{max-width:980px;margin:28px auto;padding:20px}
+    .nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+    .logo{display:flex;gap:12px;align-items:center;font-weight:700}
+    .badge{background:#eff8ff;color:#034e6d;padding:6px 10px;border-radius:999px;font-weight:700;font-size:13px}
+    .hero{background:var(--card);border-radius:14px;padding:26px;box-shadow:0 8px 24px rgba(2,8,23,.06);margin-bottom:18px}
+    h1{font-size:clamp(26px,4.5vw,38px);margin:0 0 8px}
+    p.lead{margin:0;color:var(--muted);font-size:16px}
+    .grid{display:grid;grid-template-columns:1fr 380px;gap:18px;margin-top:18px}
+    @media(max-width:940px){.grid{grid-template-columns:1fr}}
+    .card{background:var(--card);padding:18px;border-radius:12px;border:1px solid #e6eef5}
+    .benefit{display:flex;gap:12px;margin:12px 0}
+    .dot{width:12px;height:12px;border-radius:50%;background:var(--ok);margin-top:6px}
+    label{display:block;font-weight:600;margin-top:10px;margin-bottom:6px}
+    input,select,textarea,button{width:100%;padding:10px 12px;border-radius:10px;border:1px solid #d1e3ef;font-size:15px}
+    input:focus,select:focus,textarea:focus{outline:none;box-shadow:0 0 0 6px var(--ring);border-color:var(--brand)}
+    .cta{background:var(--brand);color:#fff;border:none;padding:12px 14px;border-radius:12px;font-weight:700;cursor:pointer}
+    footer{margin-top:16px;text-align:center;color:var(--muted);font-size:13px}
+    .fine{color:var(--muted);font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="nav">
+      <div class="logo">
+        <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#60c6d9,#aee6c9);display:grid;place-items:center;color:white;font-weight:800">BW</div>
+        <div>Brandywine DPC</div>
+      </div>
+      <div class="badge">New Castle County, DE</div>
+    </header>
+
+    <main>
+      <section class="hero card">
+        <h1>Direct Primary Care for families who want simple, attentive care</h1>
+        <p class="lead">Membership-based primary care in New Castle County — predictable pricing, same/next-day access, and longer visits focused on prevention and reassurance.</p>
+      </section>
+
+      <section class="grid">
+        <div class="card">
+          <h2>Why Brandywine DPC</h2>
+          <div class="benefit"><div class="dot"></div><div><strong>Flat monthly membership</strong> — no surprise bills, clear pricing.</div></div>
+          <div class="benefit"><div class="dot"></div><div><strong>Access when you need it</strong> — same/next-day visits, phone & text as appropriate.</div></div>
+          <div class="benefit"><div class="dot"></div><div><strong>Family-first care</strong> — longer visits and continuity for your family.</div></div>
+          <p class="fine" style="margin-top:14px">We’re preparing to open in New Castle County. Join the waitlist to be the first to know when membership opens.</p>
+        </div>
+
+        <aside class="card">
+          <h3 style="margin-top:0">Join the waitlist</h3>
+          <div class="fine" style="margin-bottom:10px">We’ll email you updates — expected opening, pricing, and launch invitations.</div>
+
+          <!-- MAILCHIMP EMBED: replace the div below with the full Mailchimp embed code -->
+          <div id="mc_embed_signup">
+            <!-- MC_EMBED_CODE_HERE -->
+            <!-- Example: paste the full form code that Mailchimp gives you -->
+          </div>
+
+        </aside>
+      </section>
+
+      <section style="margin-top:16px" class="card">
+        <h3>How Direct Primary Care Works</h3>
+        <p class="fine">Members pay a flat monthly fee for comprehensive primary care. No copays for visits covered by membership; transparent care and stronger doctor relationships.</p>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="y"></span> Brandywine DPC · Serving New Castle County. <div class="fine">This website is for information only and does not provide medical advice.</div>
+    </footer>
+  </div>
+
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
