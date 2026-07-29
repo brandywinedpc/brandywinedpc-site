@@ -23,7 +23,9 @@ brandywine-dpc/
 ├── contact.html          Email + location (deliberately no message form)
 ├── thanks.html           Post-submit confirmation for the no-JavaScript path
 ├── 404.html
-├── netlify.toml          Redirects, clean URLs, security headers
+├── _headers              Security headers, noindex, asset caching
+├── _redirects            301s from the old site's URLs
+├── go-live.sh            Flips the search guards at launch
 ├── robots.txt
 ├── sitemap.xml
 └── assets/
@@ -37,17 +39,19 @@ brandywine-dpc/
 
 ## Deploying
 
-**See [DEPLOY.md](DEPLOY.md) for the full walkthrough.** Short version: drag the
-`brandywine-dpc` folder onto **app.netlify.com/drop**.
+**See [DEPLOY.md](DEPLOY.md) for the full walkthrough.** Short version: push to
+GitHub and Cloudflare Pages rebuilds automatically. No build step.
 
 > **The site currently deploys hidden from search engines.** `robots.txt`
-> disallows everything and `netlify.toml` sends `X-Robots-Tag: noindex`, so the
+> disallows everything and `_headers` sends `X-Robots-Tag: noindex`, so the
 > preview can sit on a public URL without being found. Run `./go-live.sh` to
 > flip both at launch - it does them together, because forgetting one is a
 > silent failure.
 
-`netlify.toml` handles clean URLs (`/about` → `/about.html`), 301s from the old
-site's paths, the `www` → bare redirect, and security headers.
+`_headers` sets security headers and asset caching. `_redirects` handles 301s
+from the old site's paths. Clean URLs (`/about` → `/about.html`) are automatic
+on Cloudflare Pages. The `www` → bare redirect is a Cloudflare Redirect Rule,
+set in the dashboard - see DEPLOY.md.
 
 ## Making changes
 
@@ -59,12 +63,12 @@ everywhere.
 **Copy** - edit the HTML directly.
 
 **⚠️ After editing CSS or JS, bump the version number.** Every page links
-`assets/css/site.css?v=3` and `assets/js/site.js?v=5`. `netlify.toml` caches
+`assets/css/site.css?v=4` and `assets/js/site.js?v=6`. `_headers` caches
 `/assets/*` for a year as `immutable` - which is great for speed and means a
 returning visitor will **never** see your edit until that number changes:
 
 ```bash
-sed -i '' 's|site.css?v=3|site.css?v=4|g' *.html
+sed -i '' 's|site.css?v=4|site.css?v=5|g' *.html
 ```
 
 This bit me during the build, so it will bite you.
@@ -112,7 +116,7 @@ is the one that's there.
 
 **The waitlist form collects no health information at all** - name, email, ZIP,
 household type. Nothing that could constitute PHI. That's what makes it safe to
-route through Netlify and Mailchimp, neither of which will sign a BAA on
+route through Web3Forms and Mailchimp, neither of which will sign a BAA on
 standard plans.
 
 **Everything works without JavaScript.** The form has a real `action` and posts

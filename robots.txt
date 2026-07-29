@@ -3,7 +3,7 @@
 # │                                                                      │
 # │  The site is deployed to an unlisted preview URL and must not be     │
 # │  indexed yet. Run ./go-live.sh to flip this file (and the noindex    │
-# │  header in netlify.toml) when you are ready to launch.               │
+# │  header in _headers) when you are ready to launch.                   │
 # │                                                                      │
 # │  If this ships to the real domain, Morgan's name will never be       │
 # │  indexed and the site's single biggest SEO goal fails silently.      │

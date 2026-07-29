@@ -1,0 +1,19 @@
+# Headers for Cloudflare Pages.
+#
+# This is the ONLY place headers are configured. Without this file the site
+# ships with no noindex, no clickjacking protection, and no asset caching -
+# Cloudflare Pages applies almost nothing by default.
+#
+# Format: a path pattern, then indented "Header: value" lines.
+# Deploys automatically on push; no build step reads it.
+
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  # PRE-LAUNCH - removed by ./go-live.sh. See LAUNCH-BLOCKERS.md.
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable

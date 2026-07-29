@@ -1,147 +1,122 @@
-# Deploying the pre-launch preview
+# Deploying (GitHub → Cloudflare Pages)
 
-The site is configured to deploy **hidden from search engines**. You can put it
-on the internet today and it will not show up in Google, and brandywinedpc.com
-stays dark until you deliberately point it.
+The site is now Cloudflare-only. Netlify is gone: no `netlify.toml`, no Netlify
+Forms, nothing to keep in sync across two hosts.
 
----
-
-## What's already done
-
-| Guard | Where | Effect |
-|---|---|---|
-| `Disallow: /` | `robots.txt` | Tells crawlers not to crawl anything |
-| `X-Robots-Tag: noindex, nofollow, noarchive` | `netlify.toml` | The one that actually guarantees de-indexing |
-| Mailchimp disabled off-domain | `assets/js/site.js` | Test submissions **cannot** reach your real audience |
-| Domain untouched | Cloudflare | No A/CNAME record exists, so nothing resolves |
-
-Both search guards flip together with `./go-live.sh`. Don't flip them by hand.
-
-### Why two guards
-
-`robots.txt` blocks *crawling*, not *indexing*. A URL that gets linked from
-anywhere can still appear in Google as a bare result with no description, even
-while disallowed. The `X-Robots-Tag` header is what actually keeps it out - but
-Google only sees that header if it's allowed to fetch the page. Belt and
-braces is the standard staging setup, and with no inbound links the edge case
-can't trigger.
-
-### About the Mailchimp guard
-
-This one is worth knowing about, because it would have bitten you. The waitlist
-form pushes to your live Mailchimp audience. Left alone, every test submission
-Morgan made while poking at the site would have created a real subscriber.
-
-It's now gated on hostname:
-
-```js
-enabled: /(^|\.)brandywinedpc\.com$/i.test(window.location.hostname)
-```
-
-Off on `*.netlify.app` and localhost, on at the real domain. Nothing to
-remember at launch, nothing to clean up after. **Netlify Forms still captures
-every submission in every environment**, so you can still confirm the form
-works end to end while testing - just check the Netlify dashboard, not
-Mailchimp.
+Push to GitHub → Cloudflare Pages rebuilds automatically. That's the whole loop.
 
 ---
 
-## Deploy it (about 5 minutes)
+## Getting these files into your repo
 
-You already have a Netlify account - the previous site has Netlify functions in
-its archive folder. Deploy this as a **new site**, not over the old one, so the
-old one stays untouched as a fallback.
+Copy everything from this folder over your repo's working copy, then commit.
 
-### Option A - drag and drop (fastest)
-
-1. Go to **https://app.netlify.com/drop**
-2. Drag the **`brandywine-dpc` folder itself** onto the page
-   (the whole folder, not its contents, and not a zip)
-3. Wait for the deploy, then **"Claim your site"** to attach it to your account
-4. Netlify assigns something like `celebrated-marzipan-7f3a2c.netlify.app`
-
-Optionally rename it under **Site configuration → Change site name** - pick
-something unguessable, since obscurity is the only access control here.
-`brandywine-preview-k4m9x` is better than `brandywine-dpc`.
-
-> Updates mean dragging the folder again. Fine for a preview; if edits get
-> frequent, switch to Option B.
-
-### Option B - connect the Git repo (better for ongoing edits)
-
-I've already initialised a Git repo with everything committed. To use it you'd
-push to GitHub, then **Add new site → Import an existing project** in Netlify.
-Every push then deploys automatically.
-
-Build settings, if asked:
-- **Build command:** *(leave empty)*
-- **Publish directory:** `.`
-
----
-
-## Confirm it's actually hidden
-
-Run this once it's live, with your real URL:
+**⚠️ One thing a copy won't do: delete `netlify.toml`.** It has to be removed
+explicitly, or Cloudflare will happily ignore a stale config file that
+contradicts `_headers`:
 
 ```bash
-curl -sI https://YOUR-SITE.netlify.app | grep -i x-robots-tag
+git rm netlify.toml
+```
+
+### What changed, and why each file matters
+
+| File | Status | Why |
+|---|---|---|
+| `_headers` | **new - required** | The only place headers are set. Without it: no noindex, no clickjacking protection, no asset caching |
+| `_redirects` | **new** | 301s from the old site's `/about-dr-katz` and `/contact-us` paths |
+| `netlify.toml` | **delete** | Netlify-only, and now contradicted by `_headers` |
+| `index.html`, `waitlist.html` | changed | Form rewired to Web3Forms |
+| `assets/js/site.js` | changed | Web3Forms submit, honeypot, success-message fix |
+| `assets/css/site.css` | changed | Dropdown chevron fix |
+| all other `.html` | changed | Asset version bump (`css?v=4`, `js?v=6`) |
+| `go-live.sh` | changed | No longer references `netlify.toml` |
+
+The version bump matters: `_headers` caches `/assets/*` for a year as
+`immutable`, so without a new `?v=` returning visitors keep the old CSS and
+would still see the tiled-arrow bug.
+
+---
+
+## Cloudflare Pages project settings
+
+If the project already exists, confirm these under **Settings → Builds**:
+
+- **Framework preset:** None
+- **Build command:** *(empty)*
+- **Build output directory:** `/`
+
+There is no build step. Pages serves the repo as-is.
+
+---
+
+## The form now runs on Web3Forms
+
+Cloudflare Pages is static-only and returns **405 for POST**, so the form
+submits to Web3Forms instead, which emails each signup.
+
+The access key is the one from your old site:
+`cdcdabb7-57a1-40a3-9680-48c15336f0be`
+
+**Confirm it still delivers somewhere you read.** I deliberately did not send a
+test submission - that would email a stranger's inbox if the key is stale or
+was registered to an address you no longer check. Submit one yourself from the
+live preview and confirm it arrives.
+
+If it doesn't, get a fresh key at [web3forms.com](https://web3forms.com) (email
+in, key back, no account) and replace it in **both** `index.html` and
+`waitlist.html`.
+
+### How it behaves
+
+- **JS on** (virtually everyone): posts JSON, shows the inline confirmation
+- **JS off:** normal form POST, Web3Forms redirects to `thanks.html`
+- **Honeypot:** a hidden `botcheck` checkbox; bots that tick it are dropped
+- **Failure:** a non-2xx *or* `success: false` both show the error and keep the
+  form usable. Web3Forms can return HTTP 200 with `success: false` on a bad key
+  or exhausted quota, and treating that as a win would show a confirmation for
+  a lead that was never captured
+
+Free tier is 250 submissions/month. Worth watching around launch.
+
+Mailchimp is unchanged and still gated to `brandywinedpc.com`, so preview
+testing can't pollute your live audience.
+
+---
+
+## Confirm the preview is still hidden
+
+After the push completes:
+
+```bash
+curl -sI https://brandywinedpc-site.pages.dev/ | grep -i x-robots-tag
 ```
 
 **Expect:** `x-robots-tag: noindex, nofollow, noarchive`
 
-No output means the header didn't apply and the site is crawlable - stop and
-check that `netlify.toml` deployed at the folder root.
+No output means `_headers` didn't deploy - check it's at the **repo root**, not
+in a subfolder.
 
 ```bash
-curl -s https://YOUR-SITE.netlify.app/robots.txt | head -3
+curl -sI https://brandywinedpc-site.pages.dev/assets/css/site.css?v=4 | grep -i cache-control
 ```
 
-**Expect** the pre-launch banner comment and `Disallow: /`.
+**Expect:** `public, max-age=31536000, immutable`
 
-Send me the URL and I'll run the full check myself - headers, every page, the
-form, mobile layout, and console errors.
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" https://brandywinedpc-site.pages.dev/about-dr-katz
+```
 
----
-
-## Turning on the waitlist form
-
-Netlify picks the form up automatically from the HTML. After the first deploy:
-
-1. **Site configuration → Forms** - a form named `waitlist` should be listed
-2. **Forms → Form notifications → Add notification → Email notification**
-   Send to the address you actually read, or a submission sits unseen
-3. Submit a real test entry from the live URL and confirm it lands
-
-Nothing will appear in Mailchimp, by design (see above). Confirm Netlify has
-the submission and that's the form working.
-
----
-
-## What to have Morgan test
-
-Worth sending her a short list rather than "take a look":
-
-- **On her phone**, not just a laptop - most of your audience arrives that way
-- The waitlist form, including getting it wrong: submit it empty, use a bad
-  email, use a 3-digit ZIP. Errors should be clear and the right field focused
-- Read [about.html](about.html) closely - it's written in her first-person
-  voice and she should agree with every sentence. Especially the "honest note
-  on what this is" section, which admits the practice isn't for everyone
-- The FAQ's Medicare and "what if I can't afford it" answers - she's the one
-  who'll have to stand behind those in person
-- Check the "DRAFT" ribbon on the founding-member section is understood as
-  deliberate, not a bug
+**Expect:** `301`
 
 ---
 
 ## Launch day
 
-Do these in order. Steps 1-2 can happen well before you're ready to announce.
+### 1. Clear the blockers
 
-### 1. Clear the remaining blockers
-
-See [LAUNCH-BLOCKERS.md](LAUNCH-BLOCKERS.md). The founding-member `[XX]`
-placeholders and the Mailchimp merge fields are the two that matter.
+See [LAUNCH-BLOCKERS.md](LAUNCH-BLOCKERS.md) - the founding-member `[XX]`
+placeholders, the Web3Forms key confirmation, and the Mailchimp merge fields.
 
 ### 2. Flip the search guards
 
@@ -149,43 +124,39 @@ placeholders and the Mailchimp merge fields are the two that matter.
 ./go-live.sh
 ```
 
-Then redeploy. The script flips `robots.txt` and removes the noindex header
-together, then verifies both.
+Then commit and push. It flips `robots.txt` and strips the noindex from
+`_headers` together, then verifies.
 
-### 3. Point the domain in Cloudflare
+### 3. Attach the domain
 
-DNS → **Records** → add:
+Because the domain is registered *and* on DNS at Cloudflare, this is far
+simpler than the Netlify path was - no manual CNAMEs, no certificate wrangling.
 
-| Type | Name | Content | Proxy |
-|---|---|---|---|
-| CNAME | `@` | `YOUR-SITE.netlify.app` | **DNS only** (grey) |
-| CNAME | `www` | `YOUR-SITE.netlify.app` | **DNS only** (grey) |
+**Workers & Pages → your project → Custom domains → Set up a custom domain**
 
-Cloudflare flattens the CNAME at the apex, so a root CNAME is fine here.
+Add `brandywinedpc.com`, then `www.brandywinedpc.com`. Cloudflare creates the
+DNS records and issues the certificate itself.
 
-**Keep the cloud grey.** Proxying (orange) through Cloudflare in front of
-Netlify breaks Netlify's automatic certificate issuance and buys you almost
-nothing - Netlify is already a CDN with its own edge. Grey cloud, and let
-Netlify handle TLS.
+### 4. Redirect www to the bare domain
 
-Your existing `google-site-verification` TXT record is unrelated. Leave it.
+`_redirects` cannot do this - it has no hostname matching. Use the dashboard:
 
-### 4. Add the domain in Netlify
+**Rules → Redirect Rules → Create rule**
+- If: `Hostname equals www.brandywinedpc.com`
+- Then: Dynamic redirect, **301**, to
+  `concat("https://brandywinedpc.com", http.request.uri.path)`
 
-**Domain management → Add a domain →** `brandywinedpc.com`. Netlify verifies
-DNS and issues a Let's Encrypt certificate, usually within a few minutes. Set
-`brandywinedpc.com` (no `www`) as the primary domain - `netlify.toml` already
-redirects `www` to the bare domain, and splitting between the two would split
-your search signal.
+Serving both hostnames splits your search signal, which works directly against
+getting Morgan's name to rank.
 
-### 5. Verify the site is genuinely public
+### 5. Verify it's genuinely public
 
 ```bash
 curl -sI https://brandywinedpc.com | grep -i x-robots-tag
 ```
 
 **Expect no output.** Any output means the site is still invisible to Google.
-This is the single easiest thing to get wrong, and it has no visible symptom.
+This is the easiest thing to get wrong and it has no visible symptom.
 
 ```bash
 curl -s https://brandywinedpc.com/robots.txt
@@ -195,17 +166,27 @@ Should show `Allow: /` and the sitemap line.
 
 ### 6. Tell Google it exists
 
-1. **Google Search Console** → add `brandywinedpc.com` (the TXT verification
-   record is already in Cloudflare)
+1. **Search Console** → add `brandywinedpc.com` (your verification TXT record
+   is already in Cloudflare)
 2. Submit `https://brandywinedpc.com/sitemap.xml`
-3. Use **URL Inspection → Request indexing** on `/about.html` specifically -
-   that's the page that needs to rank for Morgan's name, and it's the whole
-   reason to publish before the office is even secured
+3. **URL Inspection → Request indexing** on `/about.html` specifically - that's
+   the page that has to rank for Morgan's name
 
 ---
 
 ## Rolling back
 
-Netlify keeps every deploy. **Deploys → pick an earlier one → Publish deploy**
-restores it immediately. To take the site off the internet entirely, remove the
-Cloudflare DNS records - that's faster than anything on the Netlify side.
+**Workers & Pages → your project → Deployments →** pick an earlier one →
+**Rollback**. Instant, and every past deploy is kept.
+
+To pull the site off the internet entirely, remove the custom domain from the
+Pages project.
+
+---
+
+## Shutting down Netlify
+
+Once Cloudflare is serving correctly, delete the Netlify site. Two public
+copies of the same site split search signal, and the Netlify one now has a
+dead form - its markup no longer contains the Netlify form attributes, so
+submissions there would fail silently.

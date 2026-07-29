@@ -2,16 +2,16 @@
 #
 # go-live.sh - flip Brandywine DPC from pre-launch preview to public.
 #
-# The site ships deliberately hidden from search engines. Two separate
-# switches enforce that, and forgetting either one is a silent failure:
-# the site looks perfect and simply never appears in Google.
+# The site ships deliberately hidden from search engines. Two switches
+# enforce that, and forgetting either is a silent failure: the site looks
+# perfect and simply never appears in Google.
 #
-# This script flips both at once, then verifies. Run it from the site folder:
+# This flips both at once, then verifies. Run it from the site folder:
 #
 #     ./go-live.sh
 #
-# It is idempotent - running it twice is harmless. Nothing is deployed by
-# this script; commit/redeploy afterwards as usual.
+# Idempotent - running it twice is harmless. Nothing is deployed by this
+# script; commit and push afterwards, and Cloudflare Pages rebuilds.
 
 set -euo pipefail
 cd "$(dirname "$0")"
@@ -40,35 +40,31 @@ else
   echo "${YELLOW}·${OFF} robots.txt - already live, no change"
 fi
 
-# ── 2. X-Robots-Tag noindex header ──────────────────────────────────────────
-if grep -q 'X-Robots-Tag' netlify.toml; then
+# ── 2. _headers (Cloudflare Pages) ──────────────────────────────────────────
+if [ -f _headers ] && grep -q 'X-Robots-Tag' _headers; then
   python3 - <<'PY'
 import re
-src = open('netlify.toml').read()
-# Drop the banner comment block and the X-Robots-Tag line together.
-src = re.sub(
-    r'\n[ \t]*# ╔[^\n]*\n(?:[ \t]*#[^\n]*\n)*[ \t]*X-Robots-Tag[^\n]*\n',
-    '\n',
-    src,
-)
-# Belt and braces: remove a bare X-Robots-Tag line if the block form didn't match.
-src = re.sub(r'\n[ \t]*X-Robots-Tag[^\n]*', '', src)
-open('netlify.toml', 'w').write(src)
+src = open('_headers').read()
+src = re.sub(r'\n[ \t]*# PRE-LAUNCH[^\n]*\n[ \t]*X-Robots-Tag[^\n]*', '', src)
+src = re.sub(r'\n[ \t]*X-Robots-Tag[^\n]*', '', src)   # belt and braces
+open('_headers', 'w').write(src)
 PY
-  echo "${GREEN}✓${OFF} netlify.toml - noindex header removed"
+  echo "${GREEN}✓${OFF} _headers   - noindex removed"
   changed=1
+elif [ -f _headers ]; then
+  echo "${YELLOW}·${OFF} _headers   - already live, no change"
 else
-  echo "${YELLOW}·${OFF} netlify.toml - already live, no change"
+  echo "${RED}✗${OFF} _headers   - MISSING. Cloudflare Pages has no headers without it."
 fi
 
 # ── 3. Verify ───────────────────────────────────────────────────────────────
 echo
 fail=0
-grep -q 'X-Robots-Tag' netlify.toml && { echo "${RED}✗ X-Robots-Tag still present in netlify.toml${OFF}"; fail=1; }
-grep -q '^Disallow: /$' robots.txt   && { echo "${RED}✗ robots.txt still disallows everything${OFF}"; fail=1; }
+[ -f _headers ] && grep -q 'X-Robots-Tag' _headers && { echo "${RED}✗ X-Robots-Tag still present in _headers${OFF}"; fail=1; }
+grep -q '^Disallow: /$' robots.txt && { echo "${RED}✗ robots.txt still disallows everything${OFF}"; fail=1; }
 
 if [ "$fail" -eq 1 ]; then
-  echo "${RED}Something did not flip. Fix by hand before deploying.${OFF}"
+  echo "${RED}Something did not flip. Fix by hand before pushing.${OFF}"
   exit 1
 fi
 
@@ -82,21 +78,24 @@ fi
 cat <<'EOF'
 Remaining steps, in order:
 
-  1. Redeploy to Netlify so the new headers take effect.
+  1. Commit and push. Cloudflare Pages rebuilds automatically.
 
-  2. Point the domain (Cloudflare DNS - see DEPLOY.md "Launch day"):
-       CNAME  @    <your-site>.netlify.app   DNS only (grey cloud)
-       CNAME  www  <your-site>.netlify.app   DNS only (grey cloud)
+  2. Attach the domain: Cloudflare dashboard -> Workers & Pages -> your
+     project -> Custom domains -> add brandywinedpc.com and www.
+     Cloudflare wires the DNS and issues the certificate itself.
 
-  3. Add the custom domain in Netlify and let it issue the certificate.
+  3. Add a Redirect Rule so www goes to the bare domain (Rules -> Redirect
+     Rules). Serving both splits your search signal.
 
-  4. Confirm the header is actually gone from the live site:
+  4. Confirm the site is genuinely public:
        curl -sI https://brandywinedpc.com | grep -i x-robots-tag
      Expect NO OUTPUT. Any output means the site is still hidden.
 
-  5. Submit https://brandywinedpc.com/sitemap.xml in Google Search Console.
+  5. Submit https://brandywinedpc.com/sitemap.xml in Google Search Console,
+     then request indexing on /about.html specifically.
 
 Still outstanding regardless of this script - see LAUNCH-BLOCKERS.md:
   · The founding-member section still has [XX] placeholders and a DRAFT ribbon
+  · Confirm the Web3Forms access key delivers to an inbox you actually read
   · Mailchimp needs ZIP and HOUSEHOLD merge fields created
 EOF

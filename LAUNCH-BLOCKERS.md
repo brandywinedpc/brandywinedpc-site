@@ -10,7 +10,7 @@ damage they do if missed.
 The pre-launch build ships with two search guards active:
 
 - `robots.txt` → `Disallow: /`
-- `netlify.toml` → `X-Robots-Tag: noindex, nofollow, noarchive`
+- `_headers` → `X-Robots-Tag: noindex, nofollow, noarchive`
 
 This is intentional so the preview can live on a public URL without being
 found. **Both must be flipped before launch**, and there is no visible symptom
@@ -60,14 +60,27 @@ consumer-protection framing more relevant, not less.
 
 ## 2. Waitlist form - verify end to end before announcing
 
-The form posts to **Netlify Forms** (source of truth) and additionally pushes to
+The form emails each signup via **Web3Forms** and additionally pushes to
 **Mailchimp** (best-effort, never blocks the user).
 
-**Netlify - should just work:**
-- Deploy, then go to **Site → Forms** in the Netlify dashboard
-- The form `waitlist` should appear after the first deploy
-- Turn on **email notifications** so submissions don't sit unread
-- Submit a real test entry and confirm it lands
+**Confirm the Web3Forms access key delivers to an inbox you read.**
+
+The form emails each signup via Web3Forms. The key in `index.html` and
+`waitlist.html` is inherited from your old site:
+`cdcdabb7-57a1-40a3-9680-48c15336f0be`
+
+I deliberately did **not** send a test submission - if that key is stale or was
+registered to an address nobody checks, a test would email a stranger. Submit
+one yourself from the live site and confirm it arrives.
+
+- If it arrives: done, nothing else to do
+- If it doesn't: get a fresh key at web3forms.com (email in, key back, no
+  account) and replace it in **both** files
+- Free tier is 250 submissions/month - worth watching around launch
+
+Cloudflare Pages returns 405 for POST, so there is no server-side capture as a
+backstop. If the email fails, the lead is gone. That makes confirming this the
+single most important pre-launch check.
 
 **Mailchimp - needs one setup step:**
 The config lives at the top of `assets/js/site.js`. It reuses the audience
@@ -79,7 +92,7 @@ For segmentation to work, the audience must have merge fields tagged exactly
 \*|MERGE|\* tags**.
 
 > If those tags don't exist, Mailchimp silently drops the values. You'd still
-> get the name and email, and Netlify still has everything - so this costs you
+> get the full submission by email from Web3Forms - so this costs you
 > segmentation data, not leads. Worth five minutes to get right, since
 > pre-segmenting outreach by household type is the whole reason the field
 > exists.
@@ -116,8 +129,9 @@ data can surface a wrong price directly in Google results.
 ## 5. Domain and SEO - the clock starts at launch
 
 Everything is hardcoded to `https://brandywinedpc.com` (bare, no `www`).
-`netlify.toml` redirects `www` → bare. If you want the opposite, flip that
-redirect and find-and-replace the canonical URLs.
+The `www` → bare redirect is a Cloudflare Redirect Rule set in the dashboard
+(see DEPLOY.md) - `_redirects` has no hostname matching. If you want the
+opposite, invert that rule and find-and-replace the canonical URLs.
 
 **The single highest-value SEO task:** `about.html` is built to rank for
 "Dr. Morgan Katz." When Morgan leaves ChristianaCare, patients will search her
@@ -150,7 +164,7 @@ See `PHOTO-SHOT-LIST.md` for what to actually shoot.
       from the live domain
 - [ ] Founding section resolved (numbers in + `data-founding="live"`, or deleted)
 - [ ] Deposit / rate-lock language reviewed by a lawyer
-- [ ] Netlify Forms receiving submissions; email notifications on
+- [ ] Web3Forms test submission received in a real inbox
 - [ ] Mailchimp `ZIP` and `HOUSEHOLD` merge fields created
 - [ ] Test submission completed end to end
 - [ ] `hello@brandywinedpc.com` live on Google Workspace

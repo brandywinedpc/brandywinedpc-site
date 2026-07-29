@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Inter:wght@400..600&display=swap">
-<link rel="stylesheet" href="assets/css/site.css?v=3">
+<link rel="stylesheet" href="assets/css/site.css?v=4">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#F6F3EC">
 <!-- Sets the `js` class before first paint. The reveal animations in
@@ -98,14 +98,15 @@
 
         <div>
           <div class="form-card">
-            <form name="waitlist" method="POST" action="thanks.html"
-                  data-netlify="true" data-netlify-honeypot="bot-field"
+            <form method="POST" action="https://api.web3forms.com/submit"
                   data-waitlist-form data-success-target="waitlist-success" novalidate>
-              <input type="hidden" name="form-name" value="waitlist">
+              <input type="hidden" name="access_key" value="cdcdabb7-57a1-40a3-9680-48c15336f0be">
+              <input type="hidden" name="subject" value="New Brandywine DPC waitlist signup">
+              <input type="hidden" name="from_name" value="Brandywine DPC website">
+              <input type="hidden" name="redirect" value="https://brandywinedpc.com/thanks.html">
               <input type="hidden" name="source_page" value="waitlist">
-              <p class="hp">
-                <label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"></label>
-              </p>
+              <!-- Web3Forms honeypot. Must stay unchecked and unlabelled. -->
+              <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
 
               <div class="field-row field-row--2">
                 <div class="field">
@@ -243,6 +244,6 @@
   </div>
 </footer>
 
-<script src="assets/js/site.js?v=5" defer></script>
+<script src="assets/js/site.js?v=6" defer></script>
 </body>
 </html>

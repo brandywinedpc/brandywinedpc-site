@@ -20,13 +20,13 @@
     // API key is exposed and no server is needed.
 
     // Only pushes to Mailchimp from the real domain. On preview deploys
-    // (*.netlify.app) and localhost this stays off, so testing the form does
+    // (*.pages.dev) and localhost this stays off, so testing the form does
     // NOT put fake people into the live audience. It switches itself on the
     // moment the site is served from brandywinedpc.com - nothing to remember
     // at launch, and nothing to clean up afterwards.
     //
-    // Netlify Forms still captures every submission in all environments, so
-    // you can confirm the form works end to end while testing.
+    // Web3Forms still emails every submission in all environments, so you can
+    // confirm the form works end to end while testing.
     enabled: /(^|\.)brandywinedpc\.com$/i.test(window.location.hostname),
 
     u:  '28d9c6d094be6496bf7ce6613',
@@ -35,7 +35,7 @@
 
     // IMPORTANT: ZIP and HOUSEHOLD must exist as merge fields in the Mailchimp
     // audience, or Mailchimp silently drops them. Audience > Settings >
-    // Audience fields and *|MERGE|* tags. Netlify always captures everything
+    // Audience fields and *|MERGE|* tags. Web3Forms emails the full submission
     // regardless, so a misconfiguration here loses segmentation data, not leads.
     fields: { email: 'EMAIL', first: 'FNAME', last: 'LNAME', zip: 'ZIP', household: 'HOUSEHOLD' }
   };
@@ -132,7 +132,7 @@
 
   /* ------------------------------------------------------------------------
      WAITLIST FORM
-     Netlify is the source of truth. Mailchimp is best-effort: if it fails,
+     Web3Forms is the source of truth. Mailchimp is best-effort: if it fails,
      times out, or is misconfigured, the visitor never sees an error and the
      lead is still captured.
      ------------------------------------------------------------------------ */
@@ -143,6 +143,14 @@
     var statusEl = form.querySelector('.form-status');
     var submitBtn = form.querySelector('[type="submit"]');
     var successEl = document.getElementById(form.dataset.successTarget || '');
+
+    // Web3Forms redirects here after a NO-JAVASCRIPT submit. The markup
+    // hardcodes the production URL so it's correct on the real site even with
+    // JS off; this rewrites it to whatever origin we're actually on, so
+    // testing from a *.pages.dev preview doesn't bounce people to the live
+    // domain. With JS enabled the redirect is never used at all.
+    var redirectField = form.querySelector('[name="redirect"]');
+    if (redirectField) redirectField.value = window.location.origin + '/thanks.html';
 
     /* --- inline validation ------------------------------------------------ */
 
@@ -229,8 +237,10 @@
     form.addEventListener('submit', function (e) {
       // Honeypot: a filled hidden field means a bot. Fail silently so it
       // doesn't learn anything.
-      var hp = form.querySelector('[name="bot-field"]');
-      if (hp && hp.value) { e.preventDefault(); return; }
+      // Web3Forms honeypot: a checked "botcheck" box means a bot filled the
+      // hidden field. Fail silently so it doesn't learn anything.
+      var hp = form.querySelector('[name="botcheck"]');
+      if (hp && hp.checked) { e.preventDefault(); return; }
 
       var allValid = true;
       Array.prototype.forEach.call(fields, function (input) {
@@ -265,16 +275,26 @@
       }
       if (statusEl) { statusEl.textContent = ''; statusEl.removeAttribute('data-state'); }
 
-      // Netlify first - this one has to succeed. Note we post to "/" rather
-      // than the form's action: the action is the no-JS redirect target
-      // (thanks.html), which Netlify handles server-side on a normal submit.
-      fetch(form.dataset.postTo || '/', {
+      // Web3Forms. Posts JSON and returns { success: true|false, message }.
+      // A non-2xx OR success:false both count as failure - Web3Forms can
+      // return 200 with success:false (bad access key, quota reached), and
+      // treating that as a win would show a confirmation for a lost lead.
+      delete data.botcheck;
+
+      fetch(form.getAttribute('action'), {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode(data)
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
       })
         .then(function (res) {
-          if (!res.ok) throw new Error('Submission failed (' + res.status + ')');
+          return res.json().catch(function () {
+            throw new Error('Unreadable response (' + res.status + ')');
+          });
+        })
+        .then(function (json) {
+          if (!json || json.success !== true) {
+            throw new Error(json && json.message ? json.message : 'Submission rejected');
+          }
           // Best-effort, never blocking the confirmation.
           pushToMailchimp(data);
           showSuccess(data);
@@ -295,8 +315,13 @@
 
     function showSuccess(data) {
       if (successEl) {
+        // The comma and space live here, not in the HTML, so the heading
+        // reads correctly either way: "You're on the list, Morgan." when a
+        // name was given, "You're on the list." when it wasn't.
         var nameEl = successEl.querySelector('[data-success-name]');
-        if (nameEl && data.first_name) nameEl.textContent = data.first_name;
+        if (nameEl && data.first_name) {
+          nameEl.textContent = ', ' + String(data.first_name).trim();
+        }
         form.hidden = true;
         successEl.hidden = false;
         successEl.setAttribute('tabindex', '-1');

@@ -1,0 +1,11 @@
+# Redirects for Cloudflare Pages.
+#
+# Clean URLs like /about -> /about.html are automatic on both hosts, so only
+# the old site's paths need explicit rules here.
+#
+# Format: from  to  status
+
+/about-dr-katz       /about.html      301
+/about-dr-katz.html  /about.html      301
+/contact-us          /contact.html    301
+/contact-us.html     /contact.html    301
