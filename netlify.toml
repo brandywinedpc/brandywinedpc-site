@@ -1,0 +1,99 @@
+# Netlify configuration - Brandywine Direct Primary Care
+# Static site, no build step. Drag the folder into Netlify, or connect a repo.
+
+[build]
+  publish = "."
+  command = ""
+
+# Serve clean URLs: /about instead of /about.html
+[[redirects]]
+  from = "/about"
+  to = "/about.html"
+  status = 200
+
+[[redirects]]
+  from = "/how-it-works"
+  to = "/how-it-works.html"
+  status = 200
+
+[[redirects]]
+  from = "/services"
+  to = "/services.html"
+  status = 200
+
+[[redirects]]
+  from = "/pricing"
+  to = "/pricing.html"
+  status = 200
+
+[[redirects]]
+  from = "/faq"
+  to = "/faq.html"
+  status = 200
+
+[[redirects]]
+  from = "/waitlist"
+  to = "/waitlist.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact.html"
+  status = 200
+
+# Redirects from the previous site's URLs, so existing links and any
+# indexed pages don't 404. Add more here as you find them.
+[[redirects]]
+  from = "/about-dr-katz"
+  to = "/about.html"
+  status = 301
+
+[[redirects]]
+  from = "/about-dr-katz.html"
+  to = "/about.html"
+  status = 301
+
+[[redirects]]
+  from = "/contact-us"
+  to = "/contact.html"
+  status = 301
+
+[[redirects]]
+  from = "/contact-us.html"
+  to = "/contact.html"
+  status = 301
+
+# Canonical host. Pick ONE and stick to it - serving both www and bare
+# splits your search signal, which directly undercuts the goal of Morgan's
+# name resolving here.
+[[redirects]]
+  from = "https://www.brandywinedpc.com/*"
+  to = "https://brandywinedpc.com/:splat"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+    # ╔════════════════════════════════════════════════════════════════════╗
+    # ║  PRE-LAUNCH - REMOVE THIS LINE TO LAUNCH (or run ./go-live.sh)     ║
+    # ║                                                                    ║
+    # ║  Keeps the preview out of Google. robots.txt also disallows        ║
+    # ║  crawling; this header is the part that actually guarantees        ║
+    # ║  de-indexing, because robots.txt only blocks crawling - a URL      ║
+    # ║  that gets linked from anywhere can still be indexed without it.   ║
+    # ║                                                                    ║
+    # ║  Leaving this on the live domain = invisible in search, forever,   ║
+    # ║  with no visible symptom.                                          ║
+    # ╚════════════════════════════════════════════════════════════════════╝
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
