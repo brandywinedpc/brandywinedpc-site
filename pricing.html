@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Inter:wght@400..600&display=swap">
-<link rel="stylesheet" href="assets/css/site.css?v=4">
+<link rel="stylesheet" href="assets/css/site.css?v=7">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#F6F3EC">
 
@@ -82,10 +82,9 @@
       <p class="eyebrow">Membership</p>
       <h1>The prices are <em>on the website.</em></h1>
       <p class="lede" style="margin-top:var(--s5)">
-        Not "contact us for pricing." Not a consultation to find out what it
-        costs. Here are the four numbers, what each one includes, and what they
-        work out to - so you can decide in your own time, without talking to
-        anybody.
+        No "contact us for pricing," and no consultation required to find out
+        what it costs. Here are the four numbers and what each one includes, so
+        you can decide in your own time without talking to anybody.
       </p>
     </div>
   </section>
@@ -111,7 +110,7 @@
         </div>
 
         <div class="plan plan--featured">
-          <span class="plan-flag">Most families</span>
+          <span class="plan-flag">Best value per person</span>
           <h3>Family</h3>
           <p class="plan-who">Two adults plus every child under 18</p>
           <p class="plan-price">$300<span>/month</span></p>
@@ -174,42 +173,46 @@
     <div class="wrap">
       <div class="split">
         <div data-reveal>
-          <p class="eyebrow">The math</p>
-          <h2>What that actually <em>works out to.</em></h2>
+          <p class="eyebrow">What the fee buys</p>
+          <h2>The same <em>whether you need her once or often.</em></h2>
           <p class="lede" style="margin-top:var(--s5)">
-            The honest way to look at membership is per interaction - and the
-            honest thing to say is that the more you use it, the better the
-            number gets. That's not a sales trick. It's just division.
+            Most healthcare pricing starts from how much you use. This doesn't,
+            and that's the point. What you're paying for is that Morgan has room
+            for you - a small panel, a phone she answers, and no reason to keep
+            a visit short.
           </p>
           <p style="margin-top:var(--s5);color:var(--ink-muted);font-size:.9375rem">
-            The table counts office visits only. Texts, phone calls, and video
-            visits aren't included in the count, and for most members those end
-            up being the majority of the contact.
+            A quiet year is a good outcome, not wasted money. Plenty of members
+            will mostly text, come in twice, and barely think about the fee
+            again - which is exactly how it should go.
           </p>
         </div>
 
         <div data-reveal data-reveal-delay="1">
           <div class="table-wrap">
             <table class="math">
-              <caption>Individual membership at $150/month - $1,800 a year</caption>
+              <caption>Nothing on this list is billed on top of membership</caption>
               <thead>
                 <tr>
-                  <th scope="col">Office visits a year</th>
-                  <th scope="col">Cost per visit</th>
+                  <th scope="col">When you need it</th>
+                  <th scope="col">What it costs</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><th scope="row">4 - a light year</th><td class="num">$450</td></tr>
-                <tr><th scope="row">8 - fairly typical</th><td class="num">$225</td></tr>
-                <tr><th scope="row">12 - monthly-ish</th><td class="num">$150</td></tr>
-                <tr><th scope="row">24 - a hard year</th><td class="num">$75</td></tr>
+                <tr><th scope="row">A sick visit today</th><td>Included</td></tr>
+                <tr><th scope="row">A text on a Sunday</th><td>Included</td></tr>
+                <tr><th scope="row">An unhurried annual physical</th><td>Included</td></tr>
+                <tr><th scope="row">A video visit from your desk</th><td>Included</td></tr>
+                <tr><th scope="row">Stitches, a joint injection, a skin biopsy</th><td>Included</td></tr>
+                <tr><th scope="row">The follow-up two weeks later</th><td>Included</td></tr>
+                <tr><th scope="row">The question you almost didn't ask</th><td>Included</td></tr>
               </tbody>
             </table>
           </div>
 
           <div class="table-wrap" style="margin-top:var(--s7)">
             <table class="math">
-              <caption>Family membership at $300/month - $3,600 a year</caption>
+              <caption>Family membership at $300/month covers everyone under one roof</caption>
               <thead>
                 <tr>
                   <th scope="col">Household</th>
@@ -225,6 +228,571 @@
             </table>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ LABS & MEDICATIONS ═════════════════════════════════════════════
+       Lab prices are the Quest Diagnostics client-bill rates on the Atlas.MD
+       national account. Medication prices are the Atlas.MD dispensing rates,
+       shown at a stated quantity rather than per tablet so the number on the
+       page is the number a member actually pays.
+
+       Everything here is passed through at what we pay. If a supplier rate
+       changes, these change with it - see the note at the foot of the section.
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section section--sunk" aria-label="Lab and medication pricing">
+    <div class="wrap">
+      <div class="section-head section-head--center" data-reveal>
+        <p class="eyebrow eyebrow--center">Labs &amp; medications</p>
+        <h2>The part of healthcare <em>nobody shows you.</em></h2>
+        <p class="lede">
+          A lab test has a price the way a plane ticket has a price: it depends
+          entirely on who is asking. Without an insurer in the middle, Morgan
+          pays the lab's direct rate and passes it to you at cost. These are
+          not discounts or introductory rates. They are simply what this costs
+          when nobody is billing an insurance company for it.
+        </p>
+      </div>
+
+      <div class="split" style="align-items:start">
+        <div data-reveal>
+          <div class="table-wrap">
+            <table class="math">
+              <caption>Lab work you are most likely to need. Passed through at our cost, with no markup.</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Test</th>
+                  <th scope="col">Member price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Complete blood count</th><td class="num">$2.19</td></tr>
+                <tr><th scope="row">Comprehensive metabolic panel</th><td class="num">$4.87</td></tr>
+                <tr><th scope="row">Lipid panel</th><td class="num">$4.37</td></tr>
+                <tr><th scope="row">Hemoglobin A1c</th><td class="num">$2.88</td></tr>
+                <tr><th scope="row">Thyroid (TSH)</th><td class="num">$2.23</td></tr>
+                <tr><th scope="row">Urinalysis, complete</th><td class="num">$3.81</td></tr>
+                <tr><th scope="row">Urine culture</th><td class="num">$4.49</td></tr>
+                <tr><th scope="row">Vitamin D, 25-hydroxy</th><td class="num">$18.02</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div data-reveal data-reveal-delay="1">
+          <div class="table-wrap">
+            <table class="math">
+              <caption>Common generics, dispensed in the office. Delaware permits this with no separate pharmacy permit.</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Medication</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Lisinopril 10 mg <span class="hint">blood pressure</span></th><td>30 tablets</td><td class="num">$0.54</td></tr>
+                <tr><th scope="row">Atorvastatin 20 mg <span class="hint">cholesterol</span></th><td>30 tablets</td><td class="num">$0.69</td></tr>
+                <tr><th scope="row">Metformin 500 mg <span class="hint">diabetes</span></th><td>60 tablets</td><td class="num">$1.50</td></tr>
+                <tr><th scope="row">Sertraline 50 mg <span class="hint">mood</span></th><td>30 tablets</td><td class="num">$1.05</td></tr>
+                <tr><th scope="row">Levothyroxine 100 mcg <span class="hint">thyroid</span></th><td>30 tablets</td><td class="num">$1.53</td></tr>
+                <tr><th scope="row">Amoxicillin 500 mg <span class="hint">infection</span></th><td>30 capsules</td><td class="num">$1.53</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="prose" style="margin-top:var(--s7)">
+            <p style="font-size:.9375rem;color:var(--ink-muted)">
+              Not every prescription makes sense to dispense in the office, and
+              some are cheaper at a pharmacy that runs its own discount program.
+              Morgan will tell you which is which rather than quietly marking
+              something up.
+            </p>
+            <p style="font-size:.9375rem;color:var(--ink-muted)">
+              Lab work and medications are billed at cost when you use them.
+              They are not part of the monthly fee, and you are never obliged to
+              use ours - your insurance remains an option for any of it.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="wrap--narrow" style="margin:var(--s9) auto 0" data-reveal>
+
+        <details class="price-list">
+          <summary>
+            <span>
+              <span class="pl-open">Show the full lab menu</span>
+              <span class="pl-close">Hide the full lab menu</span>
+              <span class="hint">172 tests</span>
+            </span>
+            <span class="faq-sign" aria-hidden="true"></span>
+          </summary>
+          <div class="price-list-body">
+            <div class="table-wrap">
+              <table class="math">
+                <caption>
+                  Quest Diagnostics rates on our account, passed through at
+                  cost. Send-out tests not listed here are available and priced
+                  the same way - ask and Morgan will tell you the number before
+                  anything is drawn.
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Test</th>
+                    <th scope="col">Member price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="group"><th scope="colgroup" colspan="2">Blood counts and clotting</th></tr>
+                  <tr><th scope="row">Complete blood count with differential and platelets</th><td class="num">$2.19</td></tr>
+                  <tr><th scope="row">Complete blood count without differential</th><td class="num">$1.62</td></tr>
+                  <tr><th scope="row">Hemoglobin</th><td class="num">$0.37</td></tr>
+                  <tr><th scope="row">Hematocrit</th><td class="num">$0.37</td></tr>
+                  <tr><th scope="row">Platelet count</th><td class="num">$0.48</td></tr>
+                  <tr><th scope="row">Reticulocyte count</th><td class="num">$7.30</td></tr>
+                  <tr><th scope="row">Sedimentation rate (ESR)</th><td class="num">$2.19</td></tr>
+                  <tr><th scope="row">Prothrombin time with INR</th><td class="num">$2.79</td></tr>
+                  <tr><th scope="row">Partial thromboplastin time</th><td class="num">$8.79</td></tr>
+                  <tr><th scope="row">D-dimer, quantitative</th><td class="num">$36.63</td></tr>
+                  <tr><th scope="row">Sickle cell screen</th><td class="num">$10.99</td></tr>
+                  <tr><th scope="row">Hemoglobinopathy evaluation</th><td class="num">$35.37</td></tr>
+
+                  <tr class="group"><th scope="colgroup" colspan="2">Anemia and iron</th></tr>
+                  <tr><th scope="row">Ferritin</th><td class="num">$8.27</td></tr>
+                  <tr><th scope="row">Iron, total</th><td class="num">$2.78</td></tr>
+                  <tr><th scope="row">Iron and total iron binding capacity</th><td class="num">$5.40</td></tr>
+                  <tr><th scope="row">Iron, TIBC and ferritin panel</th><td class="num">$13.67</td></tr>
+                  <tr><th scope="row">Transferrin</th><td class="num">$8.76</td></tr>
+                  <tr><th scope="row">Haptoglobin</th><td class="num">$11.26</td></tr>
+                  <tr><th scope="row">Vitamin B12</th><td class="num">$3.00</td></tr>
+                  <tr><th scope="row">Folate, serum</th><td class="num">$3.00</td></tr>
+                  <tr><th scope="row">Vitamin B12 and folate panel</th><td class="num">$6.60</td></tr>
+
+                  <tr class="group"><th scope="colgroup" colspan="2">Chemistry and organ function</th></tr>
+                  <tr><th scope="row">Basic metabolic panel</th><td class="num">$3.91</td></tr>
+                  <tr><th scope="row">Comprehensive metabolic panel</th><td class="num">$4.87</td></tr>
+                  <tr><th scope="row">Hepatic (liver) function panel</th><td class="num">$3.74</td></tr>
+                  <tr><th scope="row">Renal (kidney) function panel</th><td class="num">$4.22</td></tr>
+                  <tr><th scope="row">Electrolyte panel</th><td class="num">$3.26</td></tr>
+                  <tr><th scope="row">Creatinine</th><td class="num">$2.85</td></tr>
+                  <tr><th scope="row">Urea nitrogen (BUN)</th><td class="num">$2.85</td></tr>
+                  <tr><th scope="row">Glucose</th><td class="num">$2.85</td></tr>
+                  <tr><th scope="row">Calcium</th><td class="num">$2.85</td></tr>
+                  <tr><th scope="row">Magnesium</th><td class="num">$3.00</td></tr>
+                  <tr><th scope="row">Phosphate</th><td class="num">$2.85</td></tr>
+                  <tr><th scope="row">Uric acid</th><td class="num">$3.56</td></tr>
+                  <tr><th scope="row">Albumin</th><td class="num">$2.85</td></tr>
+                  <tr><th scope="row">Protein, total</th><td class="num">$2.85</td></tr>
+                  <tr><th scope="row">ALT</th><td class="num">$2.85</td></tr>
+                  <tr><th scope="row">AST</th><td class="num">$2.85</td></tr>
+                  <tr><th scope="row">Alkaline phosphatase</th><td class="num">$2.85</td></tr>
+                  <tr><th scope="row">Bilirubin, total</th><td class="num">$2.85</td></tr>
+                  <tr><th scope="row">GGT</th><td class="num">$1.49</td></tr>
+                  <tr><th scope="row">Lactate dehydrogenase (LD)</th><td class="num">$2.87</td></tr>
+                  <tr><th scope="row">Amylase</th><td class="num">$3.00</td></tr>
+                  <tr><th scope="row">Lipase</th><td class="num">$8.58</td></tr>
+                  <tr><th scope="row">Creatine kinase, total</th><td class="num">$4.50</td></tr>
+                  <tr><th scope="row">Ammonia</th><td class="num">$27.57</td></tr>
+                  <tr><th scope="row">Osmolality, serum</th><td class="num">$33.91</td></tr>
+
+                  <tr class="group"><th scope="colgroup" colspan="2">Urine</th></tr>
+                  <tr><th scope="row">Urinalysis, complete</th><td class="num">$3.81</td></tr>
+                  <tr><th scope="row">Urinalysis with reflex to culture</th><td class="num">$3.81</td></tr>
+                  <tr><th scope="row">Urine culture, routine</th><td class="num">$4.49</td></tr>
+                  <tr><th scope="row">Albumin (microalbumin) with creatinine, random urine</th><td class="num">$12.21</td></tr>
+                  <tr><th scope="row">Protein with creatinine, random urine</th><td class="num">$16.07</td></tr>
+
+                  <tr class="group"><th scope="colgroup" colspan="2">Heart and cholesterol</th></tr>
+                  <tr><th scope="row">Lipid panel</th><td class="num">$4.37</td></tr>
+                  <tr><th scope="row">Lipid panel with reflex to direct LDL</th><td class="num">$4.37</td></tr>
+                  <tr><th scope="row">Cholesterol, total</th><td class="num">$1.45</td></tr>
+                  <tr><th scope="row">HDL cholesterol</th><td class="num">$1.46</td></tr>
+                  <tr><th scope="row">Triglycerides</th><td class="num">$1.45</td></tr>
+                  <tr><th scope="row">Direct LDL</th><td class="num">$12.39</td></tr>
+                  <tr><th scope="row">Lipoprotein (a)</th><td class="num">$13.18</td></tr>
+                  <tr><th scope="row">Apolipoprotein B</th><td class="num">$17.05</td></tr>
+                  <tr><th scope="row">Apolipoprotein A1</th><td class="num">$27.50</td></tr>
+                  <tr><th scope="row">Lipoprotein fractionation, ion mobility</th><td class="num">$7.12</td></tr>
+                  <tr><th scope="row">High-sensitivity CRP</th><td class="num">$4.52</td></tr>
+                  <tr><th scope="row">Homocysteine</th><td class="num">$21.16</td></tr>
+                  <tr><th scope="row">NT-proBNP</th><td class="num">$71.19</td></tr>
+                  <tr><th scope="row">Troponin I, high sensitivity</th><td class="num">$35.70</td></tr>
+
+                  <tr class="group"><th scope="colgroup" colspan="2">Diabetes and blood sugar</th></tr>
+                  <tr><th scope="row">Hemoglobin A1c</th><td class="num">$2.88</td></tr>
+                  <tr><th scope="row">Hemoglobin A1c with estimated average glucose</th><td class="num">$2.88</td></tr>
+                  <tr><th scope="row">Glucose, plasma (fasting)</th><td class="num">$5.42</td></tr>
+                  <tr><th scope="row">Insulin</th><td class="num">$3.66</td></tr>
+                  <tr><th scope="row">C-peptide</th><td class="num">$15.83</td></tr>
+                  <tr><th scope="row">Gestational glucose screen, 50 g</th><td class="num">$5.42</td></tr>
+                  <tr><th scope="row">Glucose tolerance, 75 g, 2 specimens</th><td class="num">$10.85</td></tr>
+                  <tr><th scope="row">Diabetes risk panel with score</th><td class="num">$10.10</td></tr>
+
+                  <tr class="group"><th scope="colgroup" colspan="2">Thyroid</th></tr>
+                  <tr><th scope="row">TSH</th><td class="num">$2.23</td></tr>
+                  <tr><th scope="row">TSH with reflex to free T4</th><td class="num">$2.23</td></tr>
+                  <tr><th scope="row">T4, free</th><td class="num">$14.12</td></tr>
+                  <tr><th scope="row">T4, total</th><td class="num">$2.19</td></tr>
+                  <tr><th scope="row">T3, free</th><td class="num">$11.33</td></tr>
+                  <tr><th scope="row">T3, total</th><td class="num">$7.29</td></tr>
+                  <tr><th scope="row">Thyroid peroxidase antibodies</th><td class="num">$8.54</td></tr>
+                  <tr><th scope="row">Thyroglobulin antibodies</th><td class="num">$12.83</td></tr>
+                  <tr><th scope="row">Thyroid panel</th><td class="num">$24.83</td></tr>
+
+                  <tr class="group"><th scope="colgroup" colspan="2">Hormones</th></tr>
+                  <tr><th scope="row">Testosterone, total</th><td class="num">$12.20</td></tr>
+                  <tr><th scope="row">Testosterone, free</th><td class="num">$17.14</td></tr>
+                  <tr><th scope="row">Testosterone, free, bioavailable and total</th><td class="num">$22.62</td></tr>
+                  <tr><th scope="row">Sex hormone binding globulin</th><td class="num">$7.57</td></tr>
+                  <tr><th scope="row">DHEA sulfate</th><td class="num">$15.73</td></tr>
+                  <tr><th scope="row">Estradiol</th><td class="num">$21.91</td></tr>
+                  <tr><th scope="row">Progesterone</th><td class="num">$20.26</td></tr>
+                  <tr><th scope="row">FSH</th><td class="num">$8.33</td></tr>
+                  <tr><th scope="row">LH</th><td class="num">$8.33</td></tr>
+                  <tr><th scope="row">FSH and LH</th><td class="num">$16.65</td></tr>
+                  <tr><th scope="row">Prolactin</th><td class="num">$19.57</td></tr>
+                  <tr><th scope="row">Cortisol, total</th><td class="num">$16.86</td></tr>
+                  <tr><th scope="row">Anti-Mullerian hormone</th><td class="num">$26.37</td></tr>
+                  <tr><th scope="row">hCG, total, quantitative</th><td class="num">$4.49</td></tr>
+                  <tr><th scope="row">Parathyroid hormone, intact</th><td class="num">$40.06</td></tr>
+                  <tr><th scope="row">IGF-1</th><td class="num">$31.55</td></tr>
+
+                  <tr class="group"><th scope="colgroup" colspan="2">Vitamins and minerals</th></tr>
+                  <tr><th scope="row">Vitamin D, 25-hydroxy</th><td class="num">$18.02</td></tr>
+                  <tr><th scope="row">Vitamin B1 (thiamine)</th><td class="num">$29.29</td></tr>
+                  <tr><th scope="row">Vitamin B6</th><td class="num">$37.03</td></tr>
+                  <tr><th scope="row">Vitamin A</th><td class="num">$34.42</td></tr>
+                  <tr><th scope="row">Vitamin E</th><td class="num">$35.02</td></tr>
+                  <tr><th scope="row">Methylmalonic acid</th><td class="num">$13.52</td></tr>
+                  <tr><th scope="row">Zinc</th><td class="num">$20.03</td></tr>
+                  <tr><th scope="row">Copper</th><td class="num">$21.35</td></tr>
+                  <tr><th scope="row">Selenium</th><td class="num">$49.32</td></tr>
+                  <tr><th scope="row">Magnesium, red blood cell</th><td class="num">$22.31</td></tr>
+                  <tr><th scope="row">Ceruloplasmin</th><td class="num">$7.12</td></tr>
+                  <tr><th scope="row">Omega-3 and omega-6 fatty acids</th><td class="num">$34.02</td></tr>
+                  <tr><th scope="row">OmegaCheck</th><td class="num">$31.50</td></tr>
+
+                  <tr class="group"><th scope="colgroup" colspan="2">Infection and immunity</th></tr>
+                  <tr><th scope="row">Group A strep culture</th><td class="num">$4.39</td></tr>
+                  <tr><th scope="row">Group A strep antigen with reflex to culture</th><td class="num">$17.30</td></tr>
+                  <tr><th scope="row">Throat culture</th><td class="num">$27.24</td></tr>
+                  <tr><th scope="row">Blood culture</th><td class="num">$17.51</td></tr>
+                  <tr><th scope="row">Aerobic bacterial culture</th><td class="num">$7.51</td></tr>
+                  <tr><th scope="row">Genital culture</th><td class="num">$14.77</td></tr>
+                  <tr><th scope="row">Mononucleosis screen</th><td class="num">$5.17</td></tr>
+                  <tr><th scope="row">SARS-CoV-2 (COVID-19) RNA</th><td class="num">$110.00</td></tr>
+                  <tr><th scope="row">Hepatitis B surface antigen with reflex</th><td class="num">$5.75</td></tr>
+                  <tr><th scope="row">Hepatitis B surface antibody, quantitative</th><td class="num">$16.26</td></tr>
+                  <tr><th scope="row">Hepatitis B core antibody, total</th><td class="num">$15.96</td></tr>
+                  <tr><th scope="row">Hepatitis A antibody, total</th><td class="num">$17.23</td></tr>
+                  <tr><th scope="row">Hepatitis C antibody with reflex to PCR</th><td class="num">$9.01</td></tr>
+                  <tr><th scope="row">HIV 1/2 antigen and antibody, fourth generation</th><td class="num">$16.08</td></tr>
+                  <tr><th scope="row">RPR with reflex to titer</th><td class="num">$4.35</td></tr>
+                  <tr><th scope="row">Syphilis antibody cascade</th><td class="num">$15.94</td></tr>
+                  <tr><th scope="row">Chlamydia and gonorrhea RNA</th><td class="num">$17.26</td></tr>
+                  <tr><th scope="row">Trichomonas RNA</th><td class="num">$7.34</td></tr>
+                  <tr><th scope="row">Herpes simplex 1 and 2 IgG</th><td class="num">$12.01</td></tr>
+                  <tr><th scope="row">Lyme antibody with reflex to immunoblot</th><td class="num">$28.03</td></tr>
+                  <tr><th scope="row">QuantiFERON-TB Gold Plus</th><td class="num">$89.95</td></tr>
+                  <tr><th scope="row">Rubella IgG, immune status</th><td class="num">$12.80</td></tr>
+                  <tr><th scope="row">Measles IgG, immune status</th><td class="num">$17.02</td></tr>
+                  <tr><th scope="row">Mumps IgG, immune status</th><td class="num">$17.69</td></tr>
+                  <tr><th scope="row">Varicella zoster IgG</th><td class="num">$17.06</td></tr>
+                  <tr><th scope="row">Measles, mumps and rubella immune status panel</th><td class="num">$41.69</td></tr>
+
+                  <tr class="group"><th scope="colgroup" colspan="2">Digestive</th></tr>
+                  <tr><th scope="row">Fecal globin, immunochemical (FIT)</th><td class="num">$28.00</td></tr>
+                  <tr><th scope="row">Calprotectin, stool</th><td class="num">$61.29</td></tr>
+                  <tr><th scope="row">H. pylori urea breath test</th><td class="num">$51.27</td></tr>
+                  <tr><th scope="row">H. pylori antigen, stool</th><td class="num">$62.34</td></tr>
+                  <tr><th scope="row">Ova and parasites</th><td class="num">$21.78</td></tr>
+                  <tr><th scope="row">Giardia antigen, stool</th><td class="num">$27.38</td></tr>
+                  <tr><th scope="row">C. difficile toxin B, PCR</th><td class="num">$64.00</td></tr>
+                  <tr><th scope="row">Celiac disease panel</th><td class="num">$43.05</td></tr>
+                  <tr><th scope="row">Tissue transglutaminase antibody, IgA</th><td class="num">$38.67</td></tr>
+
+                  <tr class="group"><th scope="colgroup" colspan="2">Autoimmune and inflammation</th></tr>
+                  <tr><th scope="row">ANA screen with reflex to titer and pattern</th><td class="num">$9.72</td></tr>
+                  <tr><th scope="row">Rheumatoid factor</th><td class="num">$4.47</td></tr>
+                  <tr><th scope="row">Cyclic citrullinated peptide (CCP) antibody</th><td class="num">$28.23</td></tr>
+                  <tr><th scope="row">C-reactive protein</th><td class="num">$4.52</td></tr>
+                  <tr><th scope="row">Complement C3</th><td class="num">$9.97</td></tr>
+                  <tr><th scope="row">Complement C4</th><td class="num">$15.71</td></tr>
+                  <tr><th scope="row">ANCA screen with reflex to titer</th><td class="num">$42.71</td></tr>
+
+                  <tr class="group"><th scope="colgroup" colspan="2">Women's health</th></tr>
+                  <tr><th scope="row">Pap, liquid based</th><td class="num">$18.34</td></tr>
+                  <tr><th scope="row">Pap with reflex to HPV</th><td class="num">$18.34</td></tr>
+                  <tr><th scope="row">HPV DNA, high risk</th><td class="num">$37.48</td></tr>
+                  <tr><th scope="row">HPV genotypes 16 and 18</th><td class="num">$37.48</td></tr>
+                  <tr><th scope="row">Bacterial vaginosis smear, Nugent score</th><td class="num">$17.55</td></tr>
+                  <tr><th scope="row">Obstetric panel</th><td class="num">$36.92</td></tr>
+
+                  <tr class="group"><th scope="colgroup" colspan="2">Men's health</th></tr>
+                  <tr><th scope="row">PSA, total</th><td class="num">$2.88</td></tr>
+                  <tr><th scope="row">PSA, total with reflex to free</th><td class="num">$2.88</td></tr>
+                  <tr><th scope="row">PSA, free and total</th><td class="num">$29.21</td></tr>
+
+                  <tr class="group"><th scope="colgroup" colspan="2">Allergy</th></tr>
+                  <tr><th scope="row">IgE, total</th><td class="num">$4.97</td></tr>
+                  <tr><th scope="row">Allergy panel, pediatric</th><td class="num">$27.62</td></tr>
+                  <tr><th scope="row">Food allergy profile</th><td class="num">$85.39</td></tr>
+                  <tr><th scope="row">Childhood allergy profile</th><td class="num">$96.50</td></tr>
+                  <tr><th scope="row">Allergy evaluation, Northeast region</th><td class="num">$72.66</td></tr>
+
+                  <tr class="group"><th scope="colgroup" colspan="2">Medication levels and exposure</th></tr>
+                  <tr><th scope="row">Lithium</th><td class="num">$11.50</td></tr>
+                  <tr><th scope="row">Valproic acid</th><td class="num">$20.67</td></tr>
+                  <tr><th scope="row">Phenytoin</th><td class="num">$21.31</td></tr>
+                  <tr><th scope="row">Digoxin</th><td class="num">$20.76</td></tr>
+                  <tr><th scope="row">Lead, venous</th><td class="num">$10.08</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        <details class="price-list">
+          <summary>
+            <span>
+              <span class="pl-open">Show the full medication list</span>
+              <span class="pl-close">Hide the full medication list</span>
+              <span class="hint">178 medications</span>
+            </span>
+            <span class="faq-sign" aria-hidden="true"></span>
+          </summary>
+          <div class="price-list-body">
+            <div class="table-wrap">
+              <table class="math">
+                <caption>
+                  Priced at the quantity shown rather than per tablet, so the
+                  number here is the number you pay. Anything not stocked can
+                  usually be ordered, and a few things really are cheaper at a
+                  pharmacy - Morgan will say so.
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Medication</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="group"><th scope="colgroup" colspan="3">Blood pressure and heart</th></tr>
+                  <tr><th scope="row">Amlodipine 5 mg</th><td>30 tablets</td><td class="num">$0.27</td></tr>
+                  <tr><th scope="row">Amlodipine 10 mg</th><td>30 tablets</td><td class="num">$0.54</td></tr>
+                  <tr><th scope="row">Lisinopril 10 mg</th><td>30 tablets</td><td class="num">$0.54</td></tr>
+                  <tr><th scope="row">Lisinopril 20 mg</th><td>30 tablets</td><td class="num">$0.69</td></tr>
+                  <tr><th scope="row">Lisinopril 40 mg</th><td>30 tablets</td><td class="num">$0.99</td></tr>
+                  <tr><th scope="row">Losartan 50 mg</th><td>30 tablets</td><td class="num">$1.29</td></tr>
+                  <tr><th scope="row">Losartan 100 mg</th><td>30 tablets</td><td class="num">$1.38</td></tr>
+                  <tr><th scope="row">Benazepril 20 mg</th><td>30 tablets</td><td class="num">$1.32</td></tr>
+                  <tr><th scope="row">Enalapril 20 mg</th><td>30 tablets</td><td class="num">$4.53</td></tr>
+                  <tr><th scope="row">Telmisartan 40 mg</th><td>30 tablets</td><td class="num">$6.06</td></tr>
+                  <tr><th scope="row">Valsartan / HCTZ 80 / 12.5 mg</th><td>30 tablets</td><td class="num">$5.22</td></tr>
+                  <tr><th scope="row">Hydrochlorothiazide 25 mg</th><td>30 tablets</td><td class="num">$0.24</td></tr>
+                  <tr><th scope="row">Chlorthalidone 25 mg</th><td>30 tablets</td><td class="num">$5.22</td></tr>
+                  <tr><th scope="row">Furosemide 20 mg</th><td>30 tablets</td><td class="num">$0.84</td></tr>
+                  <tr><th scope="row">Furosemide 40 mg</th><td>30 tablets</td><td class="num">$0.99</td></tr>
+                  <tr><th scope="row">Spironolactone 25 mg</th><td>30 tablets</td><td class="num">$1.56</td></tr>
+                  <tr><th scope="row">Triamterene / HCTZ 37.5 / 25 mg</th><td>30 tablets</td><td class="num">$2.52</td></tr>
+                  <tr><th scope="row">Metoprolol tartrate 25 mg</th><td>60 tablets</td><td class="num">$0.84</td></tr>
+                  <tr><th scope="row">Metoprolol succinate ER 25 mg</th><td>30 tablets</td><td class="num">$0.87</td></tr>
+                  <tr><th scope="row">Metoprolol succinate ER 50 mg</th><td>30 tablets</td><td class="num">$1.98</td></tr>
+                  <tr><th scope="row">Carvedilol 6.25 mg</th><td>60 tablets</td><td class="num">$1.08</td></tr>
+                  <tr><th scope="row">Atenolol 50 mg</th><td>30 tablets</td><td class="num">$0.60</td></tr>
+                  <tr><th scope="row">Propranolol 20 mg</th><td>60 tablets</td><td class="num">$3.12</td></tr>
+                  <tr><th scope="row">Bisoprolol 10 mg</th><td>30 tablets</td><td class="num">$11.91</td></tr>
+                  <tr><th scope="row">Clonidine 0.1 mg</th><td>60 tablets</td><td class="num">$1.44</td></tr>
+                  <tr><th scope="row">Hydralazine 25 mg</th><td>90 tablets</td><td class="num">$2.34</td></tr>
+                  <tr><th scope="row">Diltiazem CD 180 mg</th><td>30 capsules</td><td class="num">$6.87</td></tr>
+                  <tr><th scope="row">Verapamil 120 mg</th><td>30 tablets</td><td class="num">$1.95</td></tr>
+                  <tr><th scope="row">Isosorbide mononitrate 30 mg</th><td>30 tablets</td><td class="num">$1.92</td></tr>
+                  <tr><th scope="row">Nitroglycerin 0.4 mg, sublingual</th><td>1 bottle</td><td class="num">$7.76</td></tr>
+                  <tr><th scope="row">Digoxin 0.125 mg</th><td>30 tablets</td><td class="num">$1.77</td></tr>
+                  <tr><th scope="row">Amiodarone 200 mg</th><td>30 tablets</td><td class="num">$4.71</td></tr>
+                  <tr><th scope="row">Sotalol 80 mg</th><td>60 tablets</td><td class="num">$3.66</td></tr>
+                  <tr><th scope="row">Flecainide 100 mg</th><td>60 tablets</td><td class="num">$7.44</td></tr>
+                  <tr><th scope="row">Warfarin 5 mg</th><td>30 tablets</td><td class="num">$1.50</td></tr>
+                  <tr><th scope="row">Clopidogrel 75 mg</th><td>30 tablets</td><td class="num">$1.65</td></tr>
+                  <tr><th scope="row">Aspirin 81 mg</th><td>90 tablets</td><td class="num">$0.54</td></tr>
+
+                  <tr class="group"><th scope="colgroup" colspan="3">Cholesterol</th></tr>
+                  <tr><th scope="row">Atorvastatin 10 mg</th><td>30 tablets</td><td class="num">$0.42</td></tr>
+                  <tr><th scope="row">Atorvastatin 20 mg</th><td>30 tablets</td><td class="num">$0.69</td></tr>
+                  <tr><th scope="row">Atorvastatin 40 mg</th><td>30 tablets</td><td class="num">$0.99</td></tr>
+                  <tr><th scope="row">Atorvastatin 80 mg</th><td>30 tablets</td><td class="num">$1.77</td></tr>
+                  <tr><th scope="row">Rosuvastatin 10 mg</th><td>30 tablets</td><td class="num">$1.86</td></tr>
+                  <tr><th scope="row">Rosuvastatin 20 mg</th><td>30 tablets</td><td class="num">$1.56</td></tr>
+                  <tr><th scope="row">Rosuvastatin 40 mg</th><td>30 tablets</td><td class="num">$2.97</td></tr>
+                  <tr><th scope="row">Simvastatin 20 mg</th><td>30 tablets</td><td class="num">$0.66</td></tr>
+                  <tr><th scope="row">Simvastatin 40 mg</th><td>30 tablets</td><td class="num">$0.78</td></tr>
+                  <tr><th scope="row">Pravastatin 20 mg</th><td>30 tablets</td><td class="num">$1.53</td></tr>
+                  <tr><th scope="row">Lovastatin 20 mg</th><td>30 tablets</td><td class="num">$1.05</td></tr>
+                  <tr><th scope="row">Ezetimibe 10 mg</th><td>30 tablets</td><td class="num">$1.44</td></tr>
+                  <tr><th scope="row">Fenofibrate 145 mg</th><td>30 tablets</td><td class="num">$3.51</td></tr>
+                  <tr><th scope="row">Gemfibrozil 600 mg</th><td>60 tablets</td><td class="num">$6.42</td></tr>
+                  <tr><th scope="row">Omega-3-acid ethyl esters 1 g</th><td>120 capsules</td><td class="num">$15.96</td></tr>
+
+                  <tr class="group"><th scope="colgroup" colspan="3">Diabetes</th></tr>
+                  <tr><th scope="row">Metformin 500 mg</th><td>60 tablets</td><td class="num">$1.50</td></tr>
+                  <tr><th scope="row">Metformin 1000 mg</th><td>60 tablets</td><td class="num">$2.22</td></tr>
+                  <tr><th scope="row">Metformin ER 500 mg</th><td>60 tablets</td><td class="num">$2.22</td></tr>
+                  <tr><th scope="row">Glipizide 5 mg</th><td>30 tablets</td><td class="num">$0.90</td></tr>
+                  <tr><th scope="row">Glimepiride 4 mg</th><td>30 tablets</td><td class="num">$1.11</td></tr>
+                  <tr><th scope="row">Glyburide 5 mg</th><td>30 tablets</td><td class="num">$0.69</td></tr>
+                  <tr><th scope="row">Pioglitazone 30 mg</th><td>30 tablets</td><td class="num">$2.22</td></tr>
+
+                  <tr class="group"><th scope="colgroup" colspan="3">Thyroid and hormones</th></tr>
+                  <tr><th scope="row">Levothyroxine 50 mcg</th><td>30 tablets</td><td class="num">$1.23</td></tr>
+                  <tr><th scope="row">Levothyroxine 75 mcg</th><td>30 tablets</td><td class="num">$1.23</td></tr>
+                  <tr><th scope="row">Levothyroxine 88 mcg</th><td>30 tablets</td><td class="num">$0.75</td></tr>
+                  <tr><th scope="row">Levothyroxine 100 mcg</th><td>30 tablets</td><td class="num">$1.53</td></tr>
+                  <tr><th scope="row">Levothyroxine 112 mcg</th><td>30 tablets</td><td class="num">$1.26</td></tr>
+                  <tr><th scope="row">Levothyroxine 125 mcg</th><td>30 tablets</td><td class="num">$3.09</td></tr>
+                  <tr><th scope="row">Levothyroxine 150 mcg</th><td>30 tablets</td><td class="num">$3.51</td></tr>
+                  <tr><th scope="row">Estradiol 1 mg</th><td>30 tablets</td><td class="num">$2.55</td></tr>
+                  <tr><th scope="row">Medroxyprogesterone 5 mg</th><td>10 tablets</td><td class="num">$1.05</td></tr>
+                  <tr><th scope="row">Medroxyprogesterone injection 150 mg</th><td>1 injection</td><td class="num">$36.96</td></tr>
+                  <tr><th scope="row">Alendronate 70 mg, weekly</th><td>4 tablets</td><td class="num">$16.41</td></tr>
+
+                  <tr class="group"><th scope="colgroup" colspan="3">Prostate and sexual health</th></tr>
+                  <tr><th scope="row">Finasteride 5 mg</th><td>30 tablets</td><td class="num">$1.95</td></tr>
+                  <tr><th scope="row">Finasteride 1 mg</th><td>30 tablets</td><td class="num">$0.66</td></tr>
+                  <tr><th scope="row">Tamsulosin 0.4 mg</th><td>30 capsules</td><td class="num">$1.56</td></tr>
+                  <tr><th scope="row">Silodosin 8 mg</th><td>30 capsules</td><td class="num">$8.13</td></tr>
+                  <tr><th scope="row">Sildenafil 20 mg</th><td>30 tablets</td><td class="num">$2.16</td></tr>
+                  <tr><th scope="row">Sildenafil 100 mg</th><td>10 tablets</td><td class="num">$3.04</td></tr>
+                  <tr><th scope="row">Tadalafil 5 mg</th><td>30 tablets</td><td class="num">$5.85</td></tr>
+
+                  <tr class="group"><th scope="colgroup" colspan="3">Mood and mental health</th></tr>
+                  <tr><th scope="row">Sertraline 50 mg</th><td>30 tablets</td><td class="num">$1.05</td></tr>
+                  <tr><th scope="row">Sertraline 100 mg</th><td>30 tablets</td><td class="num">$1.08</td></tr>
+                  <tr><th scope="row">Escitalopram 10 mg</th><td>30 tablets</td><td class="num">$1.17</td></tr>
+                  <tr><th scope="row">Escitalopram 20 mg</th><td>30 tablets</td><td class="num">$2.25</td></tr>
+                  <tr><th scope="row">Fluoxetine 20 mg</th><td>30 capsules</td><td class="num">$0.84</td></tr>
+                  <tr><th scope="row">Citalopram 20 mg</th><td>30 tablets</td><td class="num">$0.57</td></tr>
+                  <tr><th scope="row">Paroxetine 20 mg</th><td>30 tablets</td><td class="num">$1.23</td></tr>
+                  <tr><th scope="row">Bupropion SR 150 mg</th><td>60 tablets</td><td class="num">$3.48</td></tr>
+                  <tr><th scope="row">Bupropion XL 150 mg</th><td>30 tablets</td><td class="num">$4.62</td></tr>
+                  <tr><th scope="row">Venlafaxine ER 75 mg</th><td>30 capsules</td><td class="num">$3.24</td></tr>
+                  <tr><th scope="row">Duloxetine 30 mg</th><td>30 capsules</td><td class="num">$1.56</td></tr>
+                  <tr><th scope="row">Duloxetine 60 mg</th><td>30 capsules</td><td class="num">$2.28</td></tr>
+                  <tr><th scope="row">Mirtazapine 15 mg</th><td>30 tablets</td><td class="num">$1.26</td></tr>
+                  <tr><th scope="row">Trazodone 50 mg</th><td>30 tablets</td><td class="num">$0.72</td></tr>
+                  <tr><th scope="row">Buspirone 10 mg</th><td>60 tablets</td><td class="num">$1.74</td></tr>
+                  <tr><th scope="row">Hydroxyzine 25 mg</th><td>30 tablets</td><td class="num">$1.38</td></tr>
+                  <tr><th scope="row">Amitriptyline 25 mg</th><td>30 tablets</td><td class="num">$1.23</td></tr>
+                  <tr><th scope="row">Nortriptyline 25 mg</th><td>30 capsules</td><td class="num">$2.34</td></tr>
+                  <tr><th scope="row">Aripiprazole 10 mg</th><td>30 tablets</td><td class="num">$2.10</td></tr>
+                  <tr><th scope="row">Quetiapine 50 mg</th><td>30 tablets</td><td class="num">$0.60</td></tr>
+                  <tr><th scope="row">Risperidone 1 mg</th><td>30 tablets</td><td class="num">$1.05</td></tr>
+
+                  <tr class="group"><th scope="colgroup" colspan="3">Neurology</th></tr>
+                  <tr><th scope="row">Lamotrigine 150 mg</th><td>60 tablets</td><td class="num">$4.56</td></tr>
+                  <tr><th scope="row">Topiramate 50 mg</th><td>60 tablets</td><td class="num">$1.98</td></tr>
+                  <tr><th scope="row">Levetiracetam 750 mg</th><td>60 tablets</td><td class="num">$7.50</td></tr>
+                  <tr><th scope="row">Divalproex 500 mg</th><td>60 tablets</td><td class="num">$5.22</td></tr>
+                  <tr><th scope="row">Phenytoin 100 mg</th><td>90 capsules</td><td class="num">$11.88</td></tr>
+                  <tr><th scope="row">Donepezil 10 mg</th><td>30 tablets</td><td class="num">$1.26</td></tr>
+                  <tr><th scope="row">Memantine 10 mg</th><td>60 tablets</td><td class="num">$3.78</td></tr>
+                  <tr><th scope="row">Rizatriptan 10 mg</th><td>9 tablets</td><td class="num">$33.26</td></tr>
+
+                  <tr class="group"><th scope="colgroup" colspan="3">Infection</th></tr>
+                  <tr><th scope="row">Amoxicillin 500 mg</th><td>30 capsules</td><td class="num">$1.53</td></tr>
+                  <tr><th scope="row">Amoxicillin 875 mg</th><td>20 tablets</td><td class="num">$7.40</td></tr>
+                  <tr><th scope="row">Amoxicillin / clavulanate 875 / 125 mg</th><td>20 tablets</td><td class="num">$4.62</td></tr>
+                  <tr><th scope="row">Azithromycin 250 mg</th><td>6 tablets</td><td class="num">$1.33</td></tr>
+                  <tr><th scope="row">Cephalexin 500 mg</th><td>30 capsules</td><td class="num">$2.94</td></tr>
+                  <tr><th scope="row">Doxycycline 100 mg</th><td>20 tablets</td><td class="num">$2.22</td></tr>
+                  <tr><th scope="row">Ciprofloxacin 500 mg</th><td>14 tablets</td><td class="num">$2.11</td></tr>
+                  <tr><th scope="row">Sulfamethoxazole / trimethoprim DS</th><td>20 tablets</td><td class="num">$1.06</td></tr>
+                  <tr><th scope="row">Nitrofurantoin 100 mg</th><td>10 capsules</td><td class="num">$4.32</td></tr>
+                  <tr><th scope="row">Metronidazole 500 mg</th><td>14 tablets</td><td class="num">$2.77</td></tr>
+                  <tr><th scope="row">Clindamycin 300 mg</th><td>28 capsules</td><td class="num">$11.73</td></tr>
+                  <tr><th scope="row">Minocycline 100 mg</th><td>20 capsules</td><td class="num">$6.30</td></tr>
+                  <tr><th scope="row">Fluconazole 150 mg</th><td>1 tablet</td><td class="num">$1.29</td></tr>
+                  <tr><th scope="row">Terbinafine 250 mg</th><td>90 tablets</td><td class="num">$11.07</td></tr>
+                  <tr><th scope="row">Valacyclovir 500 mg</th><td>20 tablets</td><td class="num">$4.34</td></tr>
+                  <tr><th scope="row">Valacyclovir 1 g</th><td>6 tablets</td><td class="num">$2.81</td></tr>
+                  <tr><th scope="row">Acyclovir 400 mg</th><td>30 tablets</td><td class="num">$4.32</td></tr>
+                  <tr><th scope="row">Ivermectin 3 mg</th><td>4 tablets</td><td class="num">$16.52</td></tr>
+                  <tr><th scope="row">Ceftriaxone 1 g, injection</th><td>1 injection</td><td class="num">$1.92</td></tr>
+
+                  <tr class="group"><th scope="colgroup" colspan="3">Allergy, asthma and respiratory</th></tr>
+                  <tr><th scope="row">Cetirizine 10 mg</th><td>30 tablets</td><td class="num">$0.69</td></tr>
+                  <tr><th scope="row">Loratadine 10 mg</th><td>30 tablets</td><td class="num">$0.75</td></tr>
+                  <tr><th scope="row">Levocetirizine 5 mg</th><td>30 tablets</td><td class="num">$1.05</td></tr>
+                  <tr><th scope="row">Fexofenadine 180 mg</th><td>30 tablets</td><td class="num">$7.26</td></tr>
+                  <tr><th scope="row">Montelukast 10 mg</th><td>30 tablets</td><td class="num">$1.41</td></tr>
+                  <tr><th scope="row">Fluticasone nasal spray</th><td>1 bottle</td><td class="num">$6.83</td></tr>
+                  <tr><th scope="row">Azelastine nasal spray</th><td>1 bottle</td><td class="num">$6.12</td></tr>
+                  <tr><th scope="row">Albuterol inhaler</th><td>1 inhaler</td><td class="num">$12.09</td></tr>
+                  <tr><th scope="row">Albuterol nebulizer solution</th><td>25 vials</td><td class="num">$4.72</td></tr>
+                  <tr><th scope="row">Ipratropium nebulizer solution</th><td>25 vials</td><td class="num">$3.96</td></tr>
+                  <tr><th scope="row">Benzonatate 200 mg</th><td>30 capsules</td><td class="num">$3.39</td></tr>
+                  <tr><th scope="row">Prednisone 20 mg</th><td>15 tablets</td><td class="num">$0.72</td></tr>
+                  <tr><th scope="row">Prednisone 10 mg</th><td>21 tablets</td><td class="num">$1.74</td></tr>
+
+                  <tr class="group"><th scope="colgroup" colspan="3">Stomach and digestion</th></tr>
+                  <tr><th scope="row">Omeprazole 20 mg</th><td>30 capsules</td><td class="num">$0.60</td></tr>
+                  <tr><th scope="row">Omeprazole 40 mg</th><td>30 capsules</td><td class="num">$1.08</td></tr>
+                  <tr><th scope="row">Pantoprazole 40 mg</th><td>30 tablets</td><td class="num">$0.87</td></tr>
+                  <tr><th scope="row">Lansoprazole 30 mg</th><td>30 capsules</td><td class="num">$2.73</td></tr>
+                  <tr><th scope="row">Famotidine 20 mg</th><td>60 tablets</td><td class="num">$1.80</td></tr>
+                  <tr><th scope="row">Ondansetron 4 mg</th><td>20 tablets</td><td class="num">$1.06</td></tr>
+                  <tr><th scope="row">Ondansetron 8 mg</th><td>20 tablets</td><td class="num">$2.38</td></tr>
+                  <tr><th scope="row">Metoclopramide 10 mg</th><td>30 tablets</td><td class="num">$1.05</td></tr>
+                  <tr><th scope="row">Dicyclomine 20 mg</th><td>60 tablets</td><td class="num">$7.38</td></tr>
+                  <tr><th scope="row">Sucralfate 1 g</th><td>60 tablets</td><td class="num">$19.74</td></tr>
+                  <tr><th scope="row">Meclizine 25 mg</th><td>30 tablets</td><td class="num">$0.72</td></tr>
+
+                  <tr class="group"><th scope="colgroup" colspan="3">Pain and muscle</th></tr>
+                  <tr><th scope="row">Ibuprofen 800 mg</th><td>30 tablets</td><td class="num">$1.29</td></tr>
+                  <tr><th scope="row">Naproxen 500 mg</th><td>30 tablets</td><td class="num">$2.91</td></tr>
+                  <tr><th scope="row">Meloxicam 15 mg</th><td>30 tablets</td><td class="num">$0.57</td></tr>
+                  <tr><th scope="row">Diclofenac 75 mg</th><td>60 tablets</td><td class="num">$4.56</td></tr>
+                  <tr><th scope="row">Indomethacin 50 mg</th><td>30 capsules</td><td class="num">$4.47</td></tr>
+                  <tr><th scope="row">Celecoxib 200 mg</th><td>30 capsules</td><td class="num">$1.38</td></tr>
+                  <tr><th scope="row">Cyclobenzaprine 10 mg</th><td>30 tablets</td><td class="num">$0.51</td></tr>
+                  <tr><th scope="row">Methocarbamol 750 mg</th><td>40 tablets</td><td class="num">$2.76</td></tr>
+                  <tr><th scope="row">Tizanidine 4 mg</th><td>30 tablets</td><td class="num">$1.56</td></tr>
+                  <tr><th scope="row">Baclofen 20 mg</th><td>60 tablets</td><td class="num">$3.66</td></tr>
+                  <tr><th scope="row">Metaxalone 800 mg</th><td>30 tablets</td><td class="num">$13.92</td></tr>
+                  <tr><th scope="row">Chlorzoxazone 500 mg</th><td>30 tablets</td><td class="num">$6.27</td></tr>
+                  <tr><th scope="row">Ketorolac 30 mg, injection</th><td>1 injection</td><td class="num">$2.67</td></tr>
+
+                  <tr class="group"><th scope="colgroup" colspan="3">Everything else</th></tr>
+                  <tr><th scope="row">Allopurinol 300 mg</th><td>30 tablets</td><td class="num">$1.71</td></tr>
+                  <tr><th scope="row">Hydroxychloroquine 200 mg</th><td>60 tablets</td><td class="num">$9.84</td></tr>
+                  <tr><th scope="row">Methotrexate 2.5 mg, weekly</th><td>8 tablets</td><td class="num">$0.82</td></tr>
+                  <tr><th scope="row">Oxybutynin 5 mg</th><td>30 tablets</td><td class="num">$2.01</td></tr>
+                  <tr><th scope="row">Solifenacin 5 mg</th><td>30 tablets</td><td class="num">$5.49</td></tr>
+                  <tr><th scope="row">Folic acid 1 mg</th><td>30 tablets</td><td class="num">$0.39</td></tr>
+                  <tr><th scope="row">Ferrous sulfate 325 mg</th><td>30 tablets</td><td class="num">$0.63</td></tr>
+                  <tr><th scope="row">Vitamin D3 2000 IU</th><td>30 capsules</td><td class="num">$1.20</td></tr>
+                  <tr><th scope="row">Vitamin D3 5000 IU</th><td>30 capsules</td><td class="num">$1.53</td></tr>
+                  <tr><th scope="row">Vitamin D 50,000 IU, weekly</th><td>4 capsules</td><td class="num">$0.43</td></tr>
+                  <tr><th scope="row">Potassium chloride 20 mEq</th><td>30 tablets</td><td class="num">$3.72</td></tr>
+                  <tr><th scope="row">Vitamin B12 injection</th><td>30 mL vial</td><td class="num">$1.54</td></tr>
+                  <tr><th scope="row">Triamcinolone 0.1% cream</th><td>15 g tube</td><td class="num">$2.31</td></tr>
+                  <tr><th scope="row">Clobetasol 0.05% cream</th><td>30 g tube</td><td class="num">$6.62</td></tr>
+                  <tr><th scope="row">Mupirocin 2% ointment</th><td>22 g tube</td><td class="num">$2.15</td></tr>
+                  <tr><th scope="row">Triamcinolone 40 mg/mL, injection</th><td>1 injection</td><td class="num">$4.36</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        <p style="margin-top:var(--s6);font-size:.875rem;color:var(--ink-muted)">
+          These are our supplier rates as of today, passed through without
+          markup. If a supplier changes a rate, ours changes with it, and
+          Morgan will tell you the price before anything is ordered rather than
+          after. Lab draws happen in the office.
+        </p>
       </div>
     </div>
   </section>
@@ -329,6 +897,6 @@
   </div>
 </footer>
 
-<script src="assets/js/site.js?v=6" defer></script>
+<script src="assets/js/site.js?v=7" defer></script>
 </body>
 </html>

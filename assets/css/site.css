@@ -765,6 +765,105 @@ strong { font-weight: 600; color: var(--evergreen-deep); }
 .faq-sign::after  { inset: 0 7.5px auto auto; width: 1.5px; height: 16px; }
 .faq-item[open] .faq-sign::after { transform: rotate(90deg); }
 .faq-answer { padding: 0 0 var(--s6); max-width: var(--measure); color: var(--ink-muted); }
+
+/* --------------------------------------------------------------------------
+   13b. Price list disclosure - the full lab menu and formulary
+
+   Native <details> again, for the same reasons as the FAQ: it opens with
+   JavaScript off, the browser handles the expanded/collapsed state for
+   screen readers, and Cmd-F finds text inside a closed one in Chrome.
+
+   These lists run to a few hundred rows. Collapsed by default so the short
+   curated table stays the thing people actually read, with the full menu one
+   click away for the person who wants to check their own prescription.
+   -------------------------------------------------------------------------- */
+
+.price-list {
+  margin-top: var(--s7);
+  border-top: 1px solid rgba(138,154,123,.35);
+  border-bottom: 1px solid rgba(138,154,123,.35);
+}
+.price-list summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s5);
+  padding: var(--s5) 0;
+  cursor: pointer;
+  list-style: none;
+  font-size: .9375rem;
+  font-weight: 500;
+  letter-spacing: .01em;
+  color: var(--evergreen);
+  transition: color .2s var(--ease);
+}
+.price-list summary::-webkit-details-marker { display: none; }
+.price-list summary:hover { color: var(--evergreen-deep); }
+/* The open-state rotation that turns the plus into a minus lives on
+   `.faq-item[open]`, so reusing `.faq-sign` here needs its own rule or the
+   control sits open still showing a plus. */
+.price-list summary .faq-sign { margin-top: 0; }
+.price-list[open] .faq-sign::after { transform: rotate(90deg); }
+
+/* The open/closed label pair. Only one is ever shown, so the control can say
+   "Show all 174 tests" and then "Hide" without any JavaScript. */
+.price-list .pl-open  { display: inline; }
+.price-list .pl-close { display: none; }
+.price-list[open] .pl-open  { display: none; }
+.price-list[open] .pl-close { display: inline; }
+
+.price-list-body { padding-bottom: var(--s6); }
+
+/* `.hint` was previously only styled inside `.field`, so the same span used
+   here and in table rows rendered as undifferentiated body text. This is the
+   base rule; the more specific `.field .hint` still wins inside forms. */
+.hint { font-weight: 400; color: var(--ink-faint); }
+
+.price-list summary .hint { margin-left: .5rem; font-size: .8125rem; }
+.price-list summary .hint::before { content: '\00b7'; margin-right: .5rem; }
+
+/* In the short medication table the plain-English gloss ("blood pressure")
+   sits under the drug name rather than trailing it, so the two never read as
+   one long product name. */
+table.math tbody th .hint { display: block; margin-top: .15rem; font-size: .8125rem; }
+
+/* `table.math` carries min-width:460px, which is right for the short
+   comparison tables but wrong here: on a 375px screen it pushes the price
+   column off the edge, so a *price list* shows names and hides numbers until
+   you scroll sideways. These tables fit the container instead and let the long
+   test names wrap, which is the cheaper thing to give up. */
+.price-list table.math { min-width: 0; }
+.price-list table.math th,
+.price-list table.math td { padding-left: var(--s3); padding-right: var(--s3); }
+.price-list table.math td.num { white-space: nowrap; }
+.price-list table.math tbody th { padding-left: 0; }
+
+/* The medication list carries a third column, so it needs a little more room
+   than the two-column lab list. Tightening the gutters and the quantity text
+   on small screens is enough to keep all three columns on screen. */
+@media (max-width: 560px) {
+  .price-list table.math { font-size: .875rem; }
+  .price-list table.math th,
+  .price-list table.math td { padding-left: var(--s2); padding-right: var(--s2); }
+  .price-list table.math tbody th { padding-left: 0; }
+  .price-list table.math td:not(.num) { font-size: .8125rem; }
+}
+
+/* Group headings inside the long tables. A full-width row rather than a
+   separate table per group, so one scroll container holds the whole list and
+   the columns stay aligned all the way down. */
+table.math tbody tr.group th {
+  padding-top: var(--s6);
+  padding-bottom: .35rem;
+  font-family: var(--sans);
+  font-size: .6875rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--sage);
+  border-bottom: 1px solid rgba(138,154,123,.35);
+}
+table.math tbody tr.group:first-child th { padding-top: 0; }
 .faq-answer > * + * { margin-top: var(--s4); }
 
 /* --------------------------------------------------------------------------
@@ -892,20 +991,24 @@ strong { font-weight: 600; color: var(--evergreen-deep); }
 .section--deep .form-success svg { color: var(--brass-bright); }
 
 /* --------------------------------------------------------------------------
-   16. FOUNDING MEMBER MODULE
-   Ships in DRAFT until the mechanics are decided. The ribbon is not
-   decoration - it is a guard against [XX] going live.
-   Remove it by setting data-founding="live" on the section.
+   16. DRAFT GUARD
+   Any section carrying unverified numbers wears a ribbon until someone
+   confirms them. The ribbon is not decoration - it is what stops placeholder
+   figures reaching a medical practice's public pricing page.
+
+   Usage:  <section data-draft="true" data-draft-label="DRAFT - ...">
+   Remove: delete both attributes once the real numbers are in.
    -------------------------------------------------------------------------- */
 
 .founding { position: relative; }
 
-.founding[data-founding='draft'] {
+[data-draft='true'] {
+  position: relative;
   outline: 2px dashed var(--error);
   outline-offset: -2px;
 }
-.founding[data-founding='draft']::before {
-  content: 'DRAFT - placeholder numbers. Not for launch.';
+[data-draft='true']::before {
+  content: attr(data-draft-label);
   position: absolute;
   top: 0; left: 50%;
   transform: translateX(-50%);
@@ -922,7 +1025,13 @@ strong { font-weight: 600; color: var(--evergreen-deep); }
   white-space: nowrap;
 }
 @media (max-width: 560px) {
-  .founding[data-founding='draft']::before { font-size: .5625rem; padding: .3rem .6rem; }
+  [data-draft='true']::before {
+    font-size: .5625rem;
+    padding: .3rem .6rem;
+    white-space: normal;
+    max-width: 90vw;
+    text-align: center;
+  }
 }
 
 /* Placeholder tokens, styled so they cannot be mistaken for real copy. */
@@ -990,6 +1099,14 @@ table.math tbody tr:last-child th, table.math tbody tr:last-child td { border-bo
    -------------------------------------------------------------------------- */
 
 .split { display: grid; gap: clamp(var(--s6), 5vw, var(--s8)); align-items: center; }
+
+/* Grid and flex children default to min-width:auto, which means they refuse to
+   shrink below their content. A table with min-width:460px inside one therefore
+   widens the whole column and scrolls the PAGE sideways on mobile, instead of
+   letting .table-wrap scroll the table on its own. min-width:0 restores sane
+   behaviour. Applies to every grid container that can hold a table. */
+.split > *,
+.grid > * { min-width: 0; }
 @media (min-width: 900px) {
   .split { grid-template-columns: 1fr 1fr; }
   .split--flip > *:first-child { order: 2; }

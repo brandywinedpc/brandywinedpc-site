@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Inter:wght@400..600&display=swap">
-<link rel="stylesheet" href="assets/css/site.css?v=4">
+<link rel="stylesheet" href="assets/css/site.css?v=7">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/img/favicon.svg">
 <meta name="theme-color" content="#F6F3EC">
@@ -446,7 +446,7 @@
         </div>
 
         <div class="plan plan--featured">
-          <span class="plan-flag">Most families</span>
+          <span class="plan-flag">Best value per person</span>
           <h3>Family</h3>
           <p class="plan-who">Two adults plus every child under 18</p>
           <p class="plan-price">$300<span>/month</span></p>
@@ -504,17 +504,19 @@
 
        To take it live:
          1. Replace every <span class="tbd"> value below with real figures
-         2. Change data-founding="draft" to data-founding="live"
+         2. Delete the data-draft and data-draft-label attributes
          3. Have a lawyer look at the deposit language first - see
             LAUNCH-BLOCKERS.md
 
        To ship without it: delete this entire <section>.
        ═══════════════════════════════════════════════════════════════════ -->
-  <section class="section section--deep founding" data-founding="draft" aria-label="Founding member offer (draft)">
+  <section class="section section--deep founding" data-draft="true"
+           data-draft-label="DRAFT - founding member numbers not final"
+           aria-label="Founding member offer (draft)">
     <div class="wrap">
       <div class="section-head section-head--center" data-reveal>
         <p class="eyebrow eyebrow--center">Founding members</p>
-        <h2>The panel is capped. <em>That's the point.</em></h2>
+        <h2>The panel is capped <em>on purpose.</em></h2>
         <p class="lede">
           Same-day access isn't a promise Morgan is making - it's arithmetic.
           A small panel is the only structure in which it's actually true. Once
@@ -776,6 +778,6 @@
   </div>
 </footer>
 
-<script src="assets/js/site.js?v=6" defer></script>
+<script src="assets/js/site.js?v=7" defer></script>
 </body>
 </html>

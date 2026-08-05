@@ -114,19 +114,22 @@
   }
 
   /* ------------------------------------------------------------------------
-     FOUNDING-MEMBER DRAFT GUARD
-     Placeholder numbers must not ship silently. The CSS shows a ribbon; this
+     DRAFT GUARD
+     Unverified numbers must not ship silently. The CSS shows a ribbon; this
      also shouts in the console for anyone testing a deploy.
      ------------------------------------------------------------------------ */
 
-  var draft = document.querySelectorAll('[data-founding="draft"]');
+  var draft = document.querySelectorAll('[data-draft="true"]');
   if (draft.length) {
     console.warn(
       '%cBRANDYWINE - LAUNCH BLOCKER',
       'background:#8C3A2B;color:#fff;padding:2px 6px;border-radius:2px;font-weight:600',
-      '\nThe founding-member section still contains placeholder numbers.' +
-      '\nFill in the real figures, then change data-founding="draft" to' +
-      '\ndata-founding="live" to remove the draft ribbon. See LAUNCH-BLOCKERS.md.'
+      '\n' + draft.length + ' section(s) still contain unverified numbers:\n  ' +
+      Array.prototype.map.call(draft, function (el) {
+        return el.getAttribute('aria-label') || el.getAttribute('data-draft-label');
+      }).join('\n  ') +
+      '\n\nFill in the real figures, then delete the data-draft and' +
+      '\ndata-draft-label attributes. See LAUNCH-BLOCKERS.md.'
     );
   }
 

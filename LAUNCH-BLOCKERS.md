@@ -34,9 +34,47 @@ Expect **no output**. See [DEPLOY.md](DEPLOY.md) for the full launch sequence.
 
 ---
 
-## 1. Founding-member placeholders - HARD BLOCKER
+## 1. One section still carries unverified numbers - HARD BLOCKER
 
-**Where:** `index.html`, the section marked `class="founding" data-founding="draft"`
+It wears a red **DRAFT** ribbon and logs a console warning until fixed. The
+guard is generic: any element with `data-draft="true"` and a `data-draft-label`
+gets the ribbon. Remove both attributes to clear it.
+
+### 1a. Lab and medication pricing - RESOLVED, but confirm two decisions
+
+`pricing.html` now publishes **real numbers from your own Atlas.MD account**,
+so the DRAFT guard is off. Two judgment calls are baked in that you should
+confirm rather than inherit:
+
+**Labs are Quest, not LabCorp.** You sent both price files. The page uses the
+**Quest Diagnostics client-bill** column throughout, since that is the account
+you named. LabCorp is cheaper on several high-volume tests (lipid panel $2.75
+vs $4.37, CMP $2.86 vs $4.87) and dearer on others (TSH $2.75 vs $2.23). If you
+end up drawing to LabCorp, the whole table has to be reissued - the two are not
+interchangeable line by line.
+
+**Everything is passed through at cost, with no markup or draw fee.** The page
+says so in as many words, twice. If you intend to add a handling fee, a draw
+fee, or any margin, the copy is now wrong and has to change with the numbers.
+Note that Quest bills a **$5.48 PSC draw fee** on its own price list, which the
+page does not currently mention because draws happen in your office.
+
+Medication prices come from the Atlas inventory **Price** column (cost + 10%),
+multiplied out to a stated quantity so the figure on the page is what a member
+actually hands over. Every one of the 164 computed rows reconciles to unit price
+× quantity.
+
+⚠️ Published prices on a medical practice's site function as a commitment to
+the person reading them. Re-check these against your live Atlas account before
+launch and again whenever supplier rates move.
+
+> On dispensing: Delaware permits in-office physician dispensing with **no
+> separate pharmacy permit**. Controlled substances need a state Controlled
+> Substances Registration plus your DEA registration.
+
+### 1b. Founding-member placeholders
+
+**Where:** `index.html`, the section marked `data-draft="true"`
 
 That section contains `[XX]`, `[X] years`, and `$[XXX]`. It currently renders a
 red dashed outline and a **"DRAFT - placeholder numbers. Not for launch."**
@@ -45,7 +83,7 @@ shipping placeholder text impossible to do quietly.
 
 **To take it live:**
 1. Replace each `<span class="tbd">…</span>` with the real figure
-2. Change `data-founding="draft"` to `data-founding="live"`
+2. Delete the `data-draft` and `data-draft-label` attributes
 3. The ribbon and outline disappear automatically
 
 **To ship without it:** delete the whole `<section class="… founding">` block.
@@ -60,27 +98,19 @@ consumer-protection framing more relevant, not less.
 
 ## 2. Waitlist form - verify end to end before announcing
 
-The form emails each signup via **Web3Forms** and additionally pushes to
-**Mailchimp** (best-effort, never blocks the user).
+**✅ VERIFIED 29 Jul 2026 - test submission sent and email received.**
 
-**Confirm the Web3Forms access key delivers to an inbox you read.**
+The form emails each signup via **Web3Forms** (key
+`cdcdabb7-57a1-40a3-9680-48c15336f0be`, inherited from the old site) and
+additionally pushes to **Mailchimp** on a best-effort basis that never blocks
+the user. Confirmed working end to end from the live Cloudflare deploy.
 
-The form emails each signup via Web3Forms. The key in `index.html` and
-`waitlist.html` is inherited from your old site:
-`cdcdabb7-57a1-40a3-9680-48c15336f0be`
+Two things to keep an eye on:
 
-I deliberately did **not** send a test submission - if that key is stale or was
-registered to an address nobody checks, a test would email a stranger. Submit
-one yourself from the live site and confirm it arrives.
-
-- If it arrives: done, nothing else to do
-- If it doesn't: get a fresh key at web3forms.com (email in, key back, no
-  account) and replace it in **both** files
-- Free tier is 250 submissions/month - worth watching around launch
-
-Cloudflare Pages returns 405 for POST, so there is no server-side capture as a
-backstop. If the email fails, the lead is gone. That makes confirming this the
-single most important pre-launch check.
+- The Web3Forms free tier is **250 submissions/month**. Cloudflare Pages
+  returns 405 for POST, so there is no server-side capture as a backstop - if
+  the email fails, the lead is gone.
+- Re-test after any change to the form markup or the access key.
 
 **Mailchimp - needs one setup step:**
 The config lives at the top of `assets/js/site.js`. It reuses the audience
@@ -162,9 +192,13 @@ See `PHOTO-SHOT-LIST.md` for what to actually shoot.
 
 - [ ] `./go-live.sh` run, redeployed, and `x-robots-tag` confirmed **absent**
       from the live domain
-- [ ] Founding section resolved (numbers in + `data-founding="live"`, or deleted)
+- [ ] Founding-member DRAFT section resolved (real numbers in + attributes
+      removed, or the section deleted)
+- [x] Lab and medication prices are real Atlas.MD / Quest figures (5 Aug 2026)
+- [ ] Confirm Quest is the lab you will actually draw to, not LabCorp
+- [ ] Confirm pass-through at cost with no markup, handling fee, or draw fee
 - [ ] Deposit / rate-lock language reviewed by a lawyer
-- [ ] Web3Forms test submission received in a real inbox
+- [x] Web3Forms test submission received in a real inbox (29 Jul 2026)
 - [ ] Mailchimp `ZIP` and `HOUSEHOLD` merge fields created
 - [ ] Test submission completed end to end
 - [ ] `hello@brandywinedpc.com` live on Google Workspace
