@@ -72,27 +72,27 @@ launch and again whenever supplier rates move.
 > separate pharmacy permit**. Controlled substances need a state Controlled
 > Substances Registration plus your DEA registration.
 
-### 1b. Founding-member placeholders
+### 1b. Founding-member terms - RESOLVED, confirm before launch
 
-**Where:** `index.html`, the section marked `data-draft="true"`
+**Where:** `index.html`, the `#founding` section, plus every place the site
+states the standard $100 enrollment fee (`pricing.html`, `faq.html` - both the
+human-readable answer and the JSON-LD).
 
-That section contains `[XX]`, `[X] years`, and `$[XXX]`. It currently renders a
-red dashed outline and a **"DRAFT - placeholder numbers. Not for launch."**
-ribbon, and logs a warning to the browser console. This is deliberate: it makes
-shipping placeholder text impossible to do quietly.
+Real numbers are in: **150 founding memberships**, no enrollment fee for them
+(**$100** for everyone after), founding rate held for **at least 5 years**,
+against a panel Morgan expects to run at **500-600 patients total**. The
+`data-draft` guard is off - this is no longer a placeholder.
 
-**To take it live:**
-1. Replace each `<span class="tbd">…</span>` with the real figure
-2. Delete the `data-draft` and `data-draft-label` attributes
-3. The ribbon and outline disappear automatically
+⚠️ **Before launch, have a lawyer read the fee-waiver and rate-lock
+language.** "No enrollment fee for founding members" and "rate held for at
+least 5 years" are commitments to a consumer. Delaware has no DPC-specific
+statute, which makes the general consumer-protection framing more relevant,
+not less.
 
-**To ship without it:** delete the whole `<section class="… founding">` block.
-Nothing else references it.
-
-⚠️ **Before publishing deposit language, have a lawyer read it.** "Deposit
-applied to your first month" and "rate locked for X years" are commitments to a
-consumer. Delaware has no DPC-specific statute, which makes the general
-consumer-protection framing more relevant, not less.
+If any of these four numbers change (150 / $100 / 5 years / 500-600), they
+need to change everywhere at once - see the file list above. A stale $100 or
+a stale 150 anywhere reads as a bait-and-switch to a member who visits two
+pages of the site.
 
 ---
 
@@ -192,12 +192,12 @@ See `PHOTO-SHOT-LIST.md` for what to actually shoot.
 
 - [ ] `./go-live.sh` run, redeployed, and `x-robots-tag` confirmed **absent**
       from the live domain
-- [ ] Founding-member DRAFT section resolved (real numbers in + attributes
-      removed, or the section deleted)
+- [x] Founding-member numbers are real: 150 memberships, no enrollment fee
+      ($100 after), rate held 5+ years, 500-600 patient panel target
 - [x] Lab and medication prices are real Atlas.MD / Quest figures (5 Aug 2026)
 - [ ] Confirm Quest is the lab you will actually draw to, not LabCorp
 - [ ] Confirm pass-through at cost with no markup, handling fee, or draw fee
-- [ ] Deposit / rate-lock language reviewed by a lawyer
+- [ ] Fee-waiver and rate-lock language reviewed by a lawyer
 - [x] Web3Forms test submission received in a real inbox (29 Jul 2026)
 - [ ] Mailchimp `ZIP` and `HOUSEHOLD` merge fields created
 - [ ] Test submission completed end to end

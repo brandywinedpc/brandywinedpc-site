@@ -252,9 +252,9 @@
         <div class="step" data-reveal>
           <h3>A flat monthly fee</h3>
           <p>
-            One predictable payment, month to month. No contract, no enrollment
-            fee, cancel whenever you like. You always know exactly what her care
-            costs, because it's on this website.
+            One predictable payment, month to month. No contract, cancel
+            whenever you like. You always know exactly what her care costs,
+            because it's on this website.
           </p>
         </div>
         <div class="step" data-reveal data-reveal-delay="1">
@@ -425,7 +425,7 @@
         <p class="lede">
           Everything below includes unlimited visits, direct access to Dr. Katz,
           same or next-day appointments, and telehealth. Month to month - no
-          contract, no enrollment fee.
+          contract.
         </p>
       </div>
 
@@ -498,21 +498,13 @@
     </div>
   </section>
 
-  <!-- ═══ FOUNDING MEMBERS - DRAFT ═══════════════════════════════════════
-       ⚠ This section contains placeholder numbers and renders a visible
-       DRAFT ribbon until they are filled in.
-
-       To take it live:
-         1. Replace every <span class="tbd"> value below with real figures
-         2. Delete the data-draft and data-draft-label attributes
-         3. Have a lawyer look at the deposit language first - see
-            LAUNCH-BLOCKERS.md
-
-       To ship without it: delete this entire <section>.
-       ═══════════════════════════════════════════════════════════════════ -->
-  <section class="section section--deep founding" data-draft="true"
-           data-draft-label="DRAFT - founding member numbers not final"
-           aria-label="Founding member offer (draft)">
+  <!-- ═══ FOUNDING MEMBERS ═══
+       150 founding memberships, out of a panel Morgan expects to run at
+       500-600 total. No enrollment fee and a rate held for at least 5 years
+       are both commitments to a consumer - if either number changes, have a
+       lawyer check the language before it ships.
+       ═══ -->
+  <section class="section section--deep founding" id="founding" aria-label="Founding member offer">
     <div class="wrap">
       <div class="section-head section-head--center" data-reveal>
         <p class="eyebrow eyebrow--center">Founding members</p>
@@ -526,20 +518,25 @@
 
       <div class="founding-points">
         <div class="founding-point" data-reveal>
-          <span class="n"><span class="tbd">[XX]</span></span>
-          <p>Founding memberships available before the panel closes to a waitlist.</p>
+          <span class="n">150</span>
+          <p>Founding memberships available before pricing moves to the standard rate.</p>
         </div>
         <div class="founding-point" data-reveal data-reveal-delay="1">
-          <span class="n"><span class="tbd">[X] years</span></span>
-          <p>Your founding rate held, even as standard membership pricing changes.</p>
+          <span class="n">$0</span>
+          <p>Enrollment fee for founding members - it's $100 after.</p>
         </div>
         <div class="founding-point" data-reveal data-reveal-delay="2">
-          <span class="n"><span class="tbd">$[XXX]</span></span>
-          <p>Deposit to reserve a spot, applied in full to your first month.</p>
+          <span class="n">5 years</span>
+          <p>Minimum your founding rate is held, even as standard pricing changes.</p>
         </div>
       </div>
 
-      <p style="margin-top:var(--s8);text-align:center" data-reveal>
+      <p style="margin-top:var(--s6);text-align:center;font-size:.9375rem;color:rgba(246,243,236,.5)" data-reveal>
+        Founding membership is capped at 150 - roughly a quarter of the panel
+        Morgan expects to run at 500 to 600 patients total.
+      </p>
+
+      <p style="margin-top:var(--s7);text-align:center" data-reveal>
         <a class="btn btn--onDeep btn--lg" href="waitlist.html">Reserve a founding spot</a>
       </p>
     </div>
