@@ -53,11 +53,15 @@ vs $4.37, CMP $2.86 vs $4.87) and dearer on others (TSH $2.75 vs $2.23). If you
 end up drawing to LabCorp, the whole table has to be reissued - the two are not
 interchangeable line by line.
 
-**Everything is passed through at cost, with no markup or draw fee.** The page
-says so in as many words, twice. If you intend to add a handling fee, a draw
-fee, or any margin, the copy is now wrong and has to change with the numbers.
-Note that Quest bills a **$5.48 PSC draw fee** on its own price list, which the
-page does not currently mention because draws happen in your office.
+**Everything is passed through at cost, with no markup - draw location is an
+open question, not a settled one.** The page previously said draws happen in
+the office; that's not accurate, at least not initially, and the sentence has
+been removed (24 Aug 2026) rather than replaced with a guess. If members are
+sent to a Quest Patient Service Center for the actual draw, Quest bills its
+own **$5.48 PSC draw fee** on top of the test prices published here - and the
+page currently says nothing about it either way. Decide where draws will
+actually happen, whether that $5.48 gets passed to the member or absorbed,
+and put a true sentence back once you know.
 
 Medication prices come from the Atlas inventory **Price** column (cost + 10%),
 multiplied out to a stated quantity so the figure on the page is what a member
@@ -79,20 +83,26 @@ states the standard $100 enrollment fee (`pricing.html`, `faq.html` - both the
 human-readable answer and the JSON-LD).
 
 Real numbers are in: **150 founding memberships**, no enrollment fee for them
-(**$100** for everyone after), founding rate held for **at least 5 years**,
-against a panel Morgan expects to run at **500-600 patients total**. The
+(**$100** for everyone after), monthly price fixed for **at least 5 years**,
+against a panel Morgan expects to run at **about 500 patients total**. The
 `data-draft` guard is off - this is no longer a placeholder.
 
-⚠️ **Before launch, have a lawyer read the fee-waiver and rate-lock
-language.** "No enrollment fee for founding members" and "rate held for at
+⚠️ **Founding and standard members pay the identical monthly rate.** The only
+differences are the enrollment fee (waived vs. $100) and the 5-year price-lock
+guarantee (founding only). Don't let copy drift back toward implying a
+different "founding rate" vs. "standard rate" - an earlier draft did exactly
+that and had to be corrected (24 Aug 2026).
+
+⚠️ **Before launch, have a lawyer read the fee-waiver and price-lock
+language.** "No enrollment fee for founding members" and "price fixed for at
 least 5 years" are commitments to a consumer. Delaware has no DPC-specific
 statute, which makes the general consumer-protection framing more relevant,
 not less.
 
-If any of these four numbers change (150 / $100 / 5 years / 500-600), they
-need to change everywhere at once - see the file list above. A stale $100 or
-a stale 150 anywhere reads as a bait-and-switch to a member who visits two
-pages of the site.
+If any of these four numbers change (150 / $100 / 5 years / ~500), they need
+to change everywhere at once - see the file list above. A stale $100 or a
+stale 150 anywhere reads as a bait-and-switch to a member who visits two pages
+of the site.
 
 ---
 
@@ -193,11 +203,13 @@ See `PHOTO-SHOT-LIST.md` for what to actually shoot.
 - [ ] `./go-live.sh` run, redeployed, and `x-robots-tag` confirmed **absent**
       from the live domain
 - [x] Founding-member numbers are real: 150 memberships, no enrollment fee
-      ($100 after), rate held 5+ years, 500-600 patient panel target
+      ($100 after), price fixed 5+ years, ~500 patient panel target
 - [x] Lab and medication prices are real Atlas.MD / Quest figures (5 Aug 2026)
 - [ ] Confirm Quest is the lab you will actually draw to, not LabCorp
 - [ ] Confirm pass-through at cost with no markup, handling fee, or draw fee
-- [ ] Fee-waiver and rate-lock language reviewed by a lawyer
+- [ ] Decide where draws actually happen and whether Quest's $5.48 PSC draw
+      fee is passed to members, then put a true sentence back on pricing.html
+- [ ] Fee-waiver and price-lock language reviewed by a lawyer
 - [x] Web3Forms test submission received in a real inbox (29 Jul 2026)
 - [ ] Mailchimp `ZIP` and `HOUSEHOLD` merge fields created
 - [ ] Test submission completed end to end
